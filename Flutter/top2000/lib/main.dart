@@ -1,11 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:iconify_flutter/iconify_flutter.dart';
+import 'package:iconify_flutter/icons/ri.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:top2000/pages/home.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const App());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class App extends StatelessWidget {
+  const App({super.key});
 
   // This widget is the root of your application.
   @override
@@ -16,52 +22,81 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const MyHomePage(),
+      darkTheme: ThemeData.dark(),
+      home: TabBar(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class TabBar extends StatelessWidget {
+  TabBar({super.key});
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
+  final PersistentTabController _controller =
+      PersistentTabController(initialIndex: 0);
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  final bool isDarkMode =
+      SchedulerBinding.instance.window.platformBrightness == Brightness.dark;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  List<Widget> _buildScreens() {
+    return [const Home(), const Home()];
+  }
+
+  List<PersistentBottomNavBarItem> _navBarsItems() {
+    Color inactiveColor =
+        isDarkMode ? Colors.white70 : CupertinoColors.systemGrey;
+
+    return [
+      PersistentBottomNavBarItem(
+        icon: const Icon(CupertinoIcons.home),
+        title: ('Home'),
+        activeColorPrimary: CupertinoColors.activeBlue,
+        inactiveColorPrimary: inactiveColor,
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(CupertinoIcons.airplane),
+        title: ('owo'),
+        activeColorPrimary: Colors.red,
+        inactiveColorPrimary: inactiveColor,
+      ),
+    ];
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flutter Demo Home Page'),
+    return PersistentTabView(
+      context,
+      controller: _controller,
+      screens: _buildScreens(),
+      items: _navBarsItems(),
+      confineInSafeArea: true,
+      backgroundColor: isDarkMode
+          ? Colors.grey.shade800
+          : Colors.white, // Default is Colors.white.
+      handleAndroidBackButtonPress: true, // Default is true.
+      resizeToAvoidBottomInset:
+          true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
+      stateManagement: true, // Default is true.
+      hideNavigationBarWhenKeyboardShows:
+          true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
+      decoration: NavBarDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        colorBehindNavBar: isDarkMode ? Colors.grey.shade800 : Colors.white,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
+      popAllScreensOnTapOfSelectedTab: true,
+      popActionScreens: PopActionScreensType.all,
+      itemAnimationProperties: const ItemAnimationProperties(
+        // Navigation Bar's items animation properties.
+        duration: Duration(milliseconds: 200),
+        curve: Curves.ease,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      screenTransitionAnimation: const ScreenTransitionAnimation(
+        // Screen transition animation on change of selected tab.
+        animateTabTransition: true,
+        curve: Curves.ease,
+        duration: Duration(milliseconds: 200),
+      ),
+      navBarStyle:
+          NavBarStyle.style9, // Choose the nav bar style with this property.
     );
   }
 }
