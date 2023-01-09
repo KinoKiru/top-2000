@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:top2000/utils/utils.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -8,39 +9,25 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final double sizeX = MediaQuery.of(context).size.width;
+    final double sizeY = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Demo Home Page'),
-      ),
+          toolbarHeight: sizeX < sizeY ? 100 : 60,
+          title: responsiveHomeAppBar(sizeX, sizeY)),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
+          children: const <Widget>[
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              'UwU',
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
