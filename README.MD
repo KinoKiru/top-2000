@@ -10,13 +10,43 @@
 
 ---
 
+## **MoSCoW**
+
+### Must
+
+- [ ] Position of song.
+- [ ] Name of artist.
+- [ ] Song title.
+- [ ] Release date of song.
+- [ ] Filter list on year.
+
+### Should
+
+- [ ] Song image.
+- [ ] Filter list on name of artist.
+- [ ] Artist info on click (seprate page).
+- [ ] Import excel sheet for new data.
+
+### Could
+
+- [ ] Show change of position from selected and last year.
+- [ ] Sort list on given data.
+- [ ] Show extra data of song (like lyrics).
+- [ ] Play preview of song.
+
+### Won't
+
+- [ ] Cannot play full songs. (copyright reasons)
+- [ ] Program cannot add data manualy.
+
+---
+
 ## **Flutter packages**
 
 - [Jiffy](https://pub.dev/packages/jiffy)
 - [Persistent Bottom Navigation Bar](https://pub.dev/packages/persistent_bottom_nav_bar)
-- [font_awesome_flutter](https://pub.dev/packages/font_awesome_flutter)
+- [Iconify](https://pub.dev/packages/iconify_flutter/install)
 - [fluro](https://pub.dev/packages/fluro)
-- [retrofit](https://pub.dev/packages/retrofit)
 - [freezed](https://pub.dev/packages/freezed)
 - [flutter_lints](https://pub.dev/packages/flutter_lints)
 
@@ -39,6 +69,7 @@
 > - Key names of passed data by API should be in camelCasing.
 > - Variables should be properly typed, so avoid `var` as much as possible.
 > - Keep your code DRY(do not repeat yourself), So when something is used more than once make it a util.
+> - Use Sandcastle for documentation and document well.
 
 > #### Flutter
 >
@@ -48,6 +79,7 @@
 > - Functions, Classes, Properties should be PascalCase
 > - Variables should be camelCase and private starts with lowerscore
 > - Variables should be properly typed, so avoid `var` as much as possible.
+> - Document big functions and components
 
 > #### Javascript
 >
@@ -56,6 +88,7 @@
 > - Variables and Functions is camelCase.
 > - Classes, Properties are PascalCase.
 > - Files are camel cased.
+> - Document big functions.
 
 > #### HTML
 >
