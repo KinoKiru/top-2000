@@ -16,7 +16,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
           toolbarHeight: sizeX < sizeY ? 100 : 60,
-          title: responsiveHomeAppBar(sizeX, sizeY)),
+          title: responsiveHomeAppBar(sizeX, sizeY, context)),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

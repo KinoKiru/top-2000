@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -36,15 +37,20 @@ class _AppState extends State<App> {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Top2000',
-        localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
+        localizationsDelegates: <LocalizationsDelegate<dynamic>>[
+          FlutterI18nDelegate(
+            translationLoader: FileTranslationLoader(
+              fallbackFile: 'nl',
+              useCountryCode: false,
+            ),
+            missingTranslationHandler: (String? key, Locale? locale) {
+              print(
+                  "--- Missing Key: $key, languageCode: ${locale?.languageCode}");
+            },
+          ),
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: const <Locale>[
-          Locale('en', ''),
-          Locale('es', ''),
-          Locale('nl', ''),
         ],
         theme: ThemeData(
           useMaterial3: true,

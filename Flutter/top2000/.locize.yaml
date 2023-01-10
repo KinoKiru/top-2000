@@ -1,0 +1,11 @@
+assetsPath: "./assets/flutter_i18n"
+project:
+  id: "bec27154-b4eb-4fb3-a6f0-179ca28610f1" # change your project id
+  namespaces: # change your supported namespaces
+    - "mobile"
+  languages: # change your supported languages
+    - "en"
+    - "es"
+  version: "latest"
+  #isPrivate: true # in case your project is private you need also API key
+  #apiKey: "..."  # change your API key

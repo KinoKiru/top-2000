@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 
-Widget responsiveHomeAppBar(double sizeX, double sizeY) {
+Widget responsiveHomeAppBar(double sizeX, double sizeY, BuildContext context) {
   if (sizeX < sizeY) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -20,7 +21,7 @@ Widget responsiveHomeAppBar(double sizeX, double sizeY) {
               prefixIconColor: Colors.grey.shade200,
               border: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(50))),
-              labelText: 'Search',
+              labelText: FlutterI18n.translate(context, 'home.search'),
             ),
           ),
         ),
@@ -43,7 +44,7 @@ Widget responsiveHomeAppBar(double sizeX, double sizeY) {
                 prefixIconColor: Colors.grey.shade200,
                 border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(50))),
-                labelText: 'Search',
+                labelText: FlutterI18n.translate(context, 'home.search'),
               ),
             ),
           ),
