@@ -14,5 +14,7 @@ namespace Models
         public int ArtistId { get; set; }
         public Artist Artist { get; set; } = new Artist();
         public byte[]? Photo { get; set; }
+
+        public DateOnly ReleaseDate { get; set; }
     }
 }
