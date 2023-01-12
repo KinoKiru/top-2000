@@ -2,5 +2,8 @@
     "home": {
         "banner": "Hallo!",
         "search": "Zoeken"
+    },
+    "settings": {
+        "locales": "Taal instellingen"
     }
 }

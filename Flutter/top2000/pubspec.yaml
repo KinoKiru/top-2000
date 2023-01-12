@@ -48,6 +48,7 @@ dependencies:
   flutter_i18n: ^0.32.4
   intl: ^0.17.0
   flutter_i18n_locize: ^1.0.0
+  path_provider: ^2.0.11
 
 dev_dependencies:
   flutter_test:

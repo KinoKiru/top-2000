@@ -1,0 +1,9 @@
+{
+    "home": {
+        "banner": "Hallo!",
+        "search": "Search"
+    },
+    "settings": {
+        "locales": "Language settings"
+    }
+}

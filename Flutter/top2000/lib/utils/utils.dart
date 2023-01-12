@@ -1,14 +1,18 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
+import 'package:path_provider/path_provider.dart';
 
-Widget responsiveHomeAppBar(double sizeX, double sizeY, BuildContext context) {
+Widget responsiveHomeAppBar(double sizeX, double sizeY, BuildContext context,
+    {String title = 'Top2000'}) {
   if (sizeX < sizeY) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        const Text('Top2000'),
+        Text(title),
         const SizedBox(
           height: 10,
         ),
@@ -30,7 +34,7 @@ Widget responsiveHomeAppBar(double sizeX, double sizeY, BuildContext context) {
   } else {
     return Row(
       children: <Widget>[
-        const Text('Top2000'),
+        Text(title),
         const SizedBox(
           width: 10,
         ),

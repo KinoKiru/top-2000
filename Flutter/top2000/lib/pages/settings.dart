@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:top2000/components/async_builder.dart';
@@ -21,7 +22,7 @@ class _SettingsState extends State<Settings> {
 
   @override
   Widget build(BuildContext context) {
-    return SimpleAsyncBuilder(
+    return SimpleAsyncBuilder<bool>(
         future: loadPrefrences(),
         onLoad: (bool data, BuildContext context) {
           return Scaffold(
@@ -39,9 +40,18 @@ class _SettingsState extends State<Settings> {
                           isDarkMode = value;
                         });
                       }),
-                  const Text(
-                    'Settings',
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: Align(
+                      alignment: FractionalOffset.centerLeft,
+                      child: Text(
+                          FlutterI18n.translate(context, 'settings.locales'),
+                          style: const TextStyle(fontSize: 20)),
+                    ),
                   ),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: localeButtons(context)),
                   Align(
                       alignment: FractionalOffset.bottomCenter,
                       child: Text('Datum: ${Jiffy().format('D MMMM yyyy')}'))
@@ -51,4 +61,17 @@ class _SettingsState extends State<Settings> {
           );
         });
   }
+}
+
+List<Widget> localeButtons(BuildContext context) {
+  List<Widget> buttons = List<Widget>.empty(growable: true);
+  for (final String locale in <String>['nl', 'es', 'en']) {
+    buttons.add(ElevatedButton(
+        onPressed: () async {
+          await FlutterI18n.refresh(context, Locale(locale));
+          await Jiffy.locale(locale);
+        },
+        child: Text(locale)));
+  }
+  return buttons;
 }

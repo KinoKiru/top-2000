@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:top2000/components/async_builder.dart';
 import 'package:top2000/components/navigation.dart';
 import 'package:top2000/globals.dart';
+import 'package:top2000/utils/utils.dart';
 
 void main() async {
   runApp(const App());
@@ -45,7 +46,7 @@ class _AppState extends State<App> {
             ),
             missingTranslationHandler: (String? key, Locale? locale) {
               print(
-                  "--- Missing Key: $key, languageCode: ${locale?.languageCode}");
+                  '--- Missing Key: $key, languageCode: ${locale?.languageCode}');
             },
           ),
           GlobalMaterialLocalizations.delegate,
