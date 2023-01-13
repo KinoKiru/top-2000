@@ -24,7 +24,7 @@ mixin _$Song {
   String get title => throw _privateConstructorUsedError;
   DateTime get releaseDate => throw _privateConstructorUsedError;
   int get artistId => throw _privateConstructorUsedError;
-  @ConvertImage()
+  @ByteArray()
   Uint8List? get photo => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ abstract class $SongCopyWith<$Res> {
       String title,
       DateTime releaseDate,
       int artistId,
-      @ConvertImage() Uint8List? photo});
+      @ByteArray() Uint8List? photo});
 }
 
 /// @nodoc
@@ -100,7 +100,7 @@ abstract class _$$_SongCopyWith<$Res> implements $SongCopyWith<$Res> {
       String title,
       DateTime releaseDate,
       int artistId,
-      @ConvertImage() Uint8List? photo});
+      @ByteArray() Uint8List? photo});
 }
 
 /// @nodoc
@@ -151,7 +151,7 @@ class _$_Song with DiagnosticableTreeMixin implements _Song {
       required this.title,
       required this.releaseDate,
       required this.artistId,
-      @ConvertImage() this.photo});
+      @ByteArray() this.photo});
 
   factory _$_Song.fromJson(Map<String, dynamic> json) => _$$_SongFromJson(json);
 
@@ -164,7 +164,7 @@ class _$_Song with DiagnosticableTreeMixin implements _Song {
   @override
   final int artistId;
   @override
-  @ConvertImage()
+  @ByteArray()
   final Uint8List? photo;
 
   @override
@@ -223,7 +223,7 @@ abstract class _Song implements Song {
       required final String title,
       required final DateTime releaseDate,
       required final int artistId,
-      @ConvertImage() final Uint8List? photo}) = _$_Song;
+      @ByteArray() final Uint8List? photo}) = _$_Song;
 
   factory _Song.fromJson(Map<String, dynamic> json) = _$_Song.fromJson;
 
@@ -236,7 +236,7 @@ abstract class _Song implements Song {
   @override
   int get artistId;
   @override
-  @ConvertImage()
+  @ByteArray()
   Uint8List? get photo;
   @override
   @JsonKey(ignore: true)

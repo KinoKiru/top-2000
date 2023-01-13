@@ -4,6 +4,7 @@
         "search": "Zoeken"
     },
     "settings": {
-        "locales": "Taal instellingen"
+        "locales": "Taal instellingen",
+        "color": "Kleur modus"
     }
 }

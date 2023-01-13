@@ -11,7 +11,7 @@ _$_Song _$$_SongFromJson(Map<String, dynamic> json) => _$_Song(
       title: json['title'] as String,
       releaseDate: DateTime.parse(json['releaseDate'] as String),
       artistId: json['artistId'] as int,
-      photo: const ConvertImage().fromJson(json['photo'] as List<int>?),
+      photo: const ByteArray().fromJson(json['photo'] as List<int>?),
     );
 
 Map<String, dynamic> _$$_SongToJson(_$_Song instance) => <String, dynamic>{
@@ -19,5 +19,5 @@ Map<String, dynamic> _$$_SongToJson(_$_Song instance) => <String, dynamic>{
       'title': instance.title,
       'releaseDate': instance.releaseDate.toIso8601String(),
       'artistId': instance.artistId,
-      'photo': const ConvertImage().toJson(instance.photo),
+      'photo': const ByteArray().toJson(instance.photo),
     };
