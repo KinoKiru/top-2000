@@ -5,7 +5,7 @@ namespace Models
     public class Position
     {
 
-        public DateOnly Year { get; set; }
+        public int Year { get; set; }
 
         public int Place { get; set; }
 
