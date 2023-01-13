@@ -12,9 +12,8 @@ namespace Models
 
         [ForeignKey("ArtistId")]
         public int ArtistId { get; set; }
-        public Artist Artist { get; set; } = new Artist();
+        public Artist Artist { get; set; } = new ();
         public byte[]? Photo { get; set; }
-
-        public DateOnly ReleaseDate { get; set; }
+        public int ReleaseYear { get; set; }
     }
 }
