@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:top2000/components/translation_wrapper.dart';
 import 'package:top2000/utils/utils.dart';
 
 class Home extends StatefulWidget {
@@ -17,14 +18,16 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
           toolbarHeight: sizeX < sizeY ? 100 : 60,
           title: responsiveHomeAppBar(sizeX, sizeY, context)),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text(
-              'UwU',
-            ),
-          ],
+      body: TranslationWrapper(
+        onLoad: (BuildContext context) => Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const <Widget>[
+              Text(
+                'UwU',
+              ),
+            ],
+          ),
         ),
       ),
       // This trailing comma makes auto-formatting nicer for build methods.

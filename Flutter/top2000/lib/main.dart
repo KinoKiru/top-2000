@@ -41,7 +41,8 @@ class _AppState extends State<App> {
         localizationsDelegates: <LocalizationsDelegate<dynamic>>[
           FlutterI18nDelegate(
             translationLoader: FileTranslationLoader(
-              fallbackFile: 'nl',
+              forcedLocale: const Locale('nl'),
+              fallbackFile: 'en',
               useCountryCode: false,
             ),
             missingTranslationHandler: (String? key, Locale? locale) {
@@ -60,7 +61,10 @@ class _AppState extends State<App> {
         home: SimpleAsyncBuilder<bool>(
           future: loadColorMode(),
           onLoad: (bool data, BuildContext context) {
-            return Navigation();
+            return StreamBuilder<bool>(
+                initialData: true,
+                stream: FlutterI18n.retrieveLoadedStream(context),
+                builder: (BuildContext context, _) => Navigation());
           },
         ),
       ),
