@@ -6,5 +6,10 @@
   "settings": {
     "locales": "Configuración de lenguaje",
     "color": "Modo de color"
+  },
+  "navigation": {
+    "home": "Comienzo",
+    "playlist": "lista de reproducción",
+    "settings": "Ajustes"
   }
 }
