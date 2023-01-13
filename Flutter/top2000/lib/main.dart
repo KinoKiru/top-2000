@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:top2000/components/async_builder.dart';
 import 'package:top2000/components/navigation.dart';
 import 'package:top2000/globals.dart';
+import 'package:top2000/utils/utils.dart';
 
 void main() async {
   runApp(const App());
@@ -40,12 +41,13 @@ class _AppState extends State<App> {
         localizationsDelegates: <LocalizationsDelegate<dynamic>>[
           FlutterI18nDelegate(
             translationLoader: FileTranslationLoader(
-              fallbackFile: 'nl',
+              forcedLocale: const Locale('nl'),
+              fallbackFile: 'en',
               useCountryCode: false,
             ),
             missingTranslationHandler: (String? key, Locale? locale) {
               print(
-                  "--- Missing Key: $key, languageCode: ${locale?.languageCode}");
+                  '--- Missing Key: $key, languageCode: ${locale?.languageCode}');
             },
           ),
           GlobalMaterialLocalizations.delegate,
@@ -59,7 +61,10 @@ class _AppState extends State<App> {
         home: SimpleAsyncBuilder<bool>(
           future: loadColorMode(),
           onLoad: (bool data, BuildContext context) {
-            return Navigation();
+            return StreamBuilder<bool>(
+                initialData: true,
+                stream: FlutterI18n.retrieveLoadedStream(context),
+                builder: (BuildContext context, _) => Navigation());
           },
         ),
       ),
