@@ -6,10 +6,5 @@
     "settings": {
         "locales": "Taal instellingen",
         "color": "Kleur modus"
-    },
-    "navigation": {
-        "home": "Start",
-        "settings": "Instellingen",
-        "playlist": "Afspeellijst"
     }
 }

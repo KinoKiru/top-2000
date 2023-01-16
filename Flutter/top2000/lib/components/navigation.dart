@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:top2000/globals.dart';
 import 'package:top2000/pages/playlist.dart';
@@ -17,25 +16,25 @@ class Navigation extends StatelessWidget {
     return <Widget>[const Home(), const Playlist(), const Settings()];
   }
 
-  List<PersistentBottomNavBarItem> _navBarsItems(BuildContext context) {
+  List<PersistentBottomNavBarItem> _navBarsItems() {
     Color inactiveColor =
         isDarkMode ? Colors.white70 : CupertinoColors.systemGrey;
     return <PersistentBottomNavBarItem>[
       PersistentBottomNavBarItem(
         icon: const Icon(CupertinoIcons.home),
-        title: (FlutterI18n.translate(context, 'navigation.home')),
+        title: ('Home'),
         activeColorPrimary: CupertinoColors.activeBlue,
         inactiveColorPrimary: inactiveColor,
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(CupertinoIcons.music_note_list),
-        title: (FlutterI18n.translate(context, 'navigation.playlist')),
+        title: ('Playlist'),
         activeColorPrimary: Colors.red,
         inactiveColorPrimary: inactiveColor,
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(CupertinoIcons.gear),
-        title: (FlutterI18n.translate(context, 'navigation.settings')),
+        title: ('Settings'),
         activeColorPrimary: Colors.green,
         inactiveColorPrimary: inactiveColor,
       )
@@ -48,7 +47,7 @@ class Navigation extends StatelessWidget {
       context,
       controller: _controller,
       screens: _buildScreens(),
-      items: _navBarsItems(context),
+      items: _navBarsItems(),
       confineInSafeArea: true,
       backgroundColor: isDarkMode
           ? Colors.grey.shade800
