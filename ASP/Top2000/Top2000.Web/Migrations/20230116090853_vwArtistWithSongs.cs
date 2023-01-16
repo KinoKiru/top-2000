@@ -13,8 +13,8 @@ namespace Web.Migrations
         {
             StringBuilder sb = new("CREATE VIEW vwArtistWithSongs");
             sb.Append(" AS"); sb.Append(" SELECT Name, Title, ReleaseYear");
-            sb.Append(" FROM artist a");
-            sb.Append(" INNER JOIN song s ON a.artistId = s.artistId");
+            sb.Append(" FROM Artist a");
+            sb.Append(" INNER JOIN song s ON a.ArtistId = s.ArtistId");
             migrationBuilder.Sql(sb.ToString());
         }
 

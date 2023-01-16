@@ -40,6 +40,9 @@ namespace Web.Migrations
                     b.Property<byte[]>("Photo")
                         .HasColumnType("varbinary(max)");
 
+                    b.Property<string>("WikiUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ArtistId");
 
                     b.ToTable("Artist");

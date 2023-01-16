@@ -17,11 +17,12 @@ namespace Web.Migrations
                     ArtistId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Photo = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
+                    Photo = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(MAX)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Artists", x => x.ArtistId);
+                    table.PrimaryKey("PK_Artist", x => x.ArtistId);
                 });
 
             migrationBuilder.CreateTable(
@@ -37,9 +38,9 @@ namespace Web.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Songs", x => x.SongId);
+                    table.PrimaryKey("PK_Song", x => x.SongId);
                     table.ForeignKey(
-                        name: "FK_Songs_Artists_ArtistId",
+                        name: "FK_Song_Artist_ArtistId",
                         column: x => x.ArtistId,
                         principalTable: "Artist",
                         principalColumn: "ArtistId",
@@ -47,7 +48,7 @@ namespace Web.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Songs_ArtistId",
+                name: "IX_Song_ArtistId",
                 table: "Song",
                 column: "ArtistId");
         }

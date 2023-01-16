@@ -11,5 +11,6 @@ namespace Models
         public string Name { get; set; } = string.Empty;
         public byte[]? Photo { get; set; }
         public string? Description { get; set; } = string.Empty;
+        public string? WikiUrl { get; set; } = string.Empty;
     }
 }

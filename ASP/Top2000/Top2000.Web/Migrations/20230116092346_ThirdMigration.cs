@@ -20,9 +20,9 @@ namespace Web.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Positions", x => new { x.Year, x.SongId });
+                    table.PrimaryKey("PK_Position", x => new { x.Year, x.SongId });
                     table.ForeignKey(
-                        name: "FK_Positions_Songs_SongId",
+                        name: "FK_Position_Song_SongId",
                         column: x => x.SongId,
                         principalTable: "Song",
                         principalColumn: "SongId",
@@ -30,7 +30,7 @@ namespace Web.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Positions_SongId",
+                name: "IX_Position_SongId",
                 table: "Position",
                 column: "SongId");
         }
