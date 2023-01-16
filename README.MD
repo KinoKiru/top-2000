@@ -48,20 +48,21 @@
     Hier kun je alles lezen over ons plan van eisen.
 
 ### **Het bedrijf**
-     De radio zender, zend elk jaar de top 2000 uit als evenement.
+     De radio zender NPO Radio 2 zend elk jaar de top 2000 uit als evenement. Verder zenden ze ook elke dag normale radio uit.
 
 ### **Probleemstelling**
-     De radio zenders is gwn incepabel
+     
 
 ### **Doelgroep**
-    De Doelgroep is 40 plussers ah sukkeltje
 
 ### **Lettertype**
-    Open sans
 
 ### **Huiskleur**
-    Vieszwart en bleekmiddelwit
-
+    Dark mode:
+        Primary: #BB86FC
+        Secondary: #
+        Bakground: #212121
+        
 ### **Layout schets**
     ____
     |__|
