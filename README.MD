@@ -41,6 +41,32 @@
 
 ---
 
+## **Plan van eisen**
+
+
+### **Inleiding**
+    Hier kun je alles lezen over ons plan van eisen.
+
+### **Het bedrijf**
+     De radio zender, zend elk jaar de top 2000 uit als evenement.
+
+### **Probleemstelling**
+     De radio zenders is gwn incepabel
+
+### **Doelgroep**
+    De Doelgroep is 40 plussers ah sukkeltje
+
+### **Lettertype**
+    Open sans
+
+### **Huiskleur**
+    Vieszwart en bleekmiddelwit
+
+### **Layout schets**
+    ____
+    |__|
+---
+
 ## **Flutter packages**
 
 - [Jiffy](https://pub.dev/packages/jiffy)
