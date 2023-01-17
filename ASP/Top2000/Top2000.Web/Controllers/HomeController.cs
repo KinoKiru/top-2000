@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using DataAccess;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using Top2000.Web.Models;
 
-namespace Top2000.Web.Controllers
+namespace Web.Controllers
 {
     public class HomeController : Controller
     {

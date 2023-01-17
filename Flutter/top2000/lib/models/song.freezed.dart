@@ -23,7 +23,7 @@ mixin _$Song {
   int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   DateTime get releaseDate => throw _privateConstructorUsedError;
-  int get artistId => throw _privateConstructorUsedError;
+  Artist get artist => throw _privateConstructorUsedError;
   @ByteArray()
   Uint8List? get photo => throw _privateConstructorUsedError;
 
@@ -41,8 +41,10 @@ abstract class $SongCopyWith<$Res> {
       {int id,
       String title,
       DateTime releaseDate,
-      int artistId,
+      Artist artist,
       @ByteArray() Uint8List? photo});
+
+  $ArtistCopyWith<$Res> get artist;
 }
 
 /// @nodoc
@@ -61,7 +63,7 @@ class _$SongCopyWithImpl<$Res, $Val extends Song>
     Object? id = null,
     Object? title = null,
     Object? releaseDate = null,
-    Object? artistId = null,
+    Object? artist = null,
     Object? photo = freezed,
   }) {
     return _then(_value.copyWith(
@@ -77,15 +79,23 @@ class _$SongCopyWithImpl<$Res, $Val extends Song>
           ? _value.releaseDate
           : releaseDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      artistId: null == artistId
-          ? _value.artistId
-          : artistId // ignore: cast_nullable_to_non_nullable
-              as int,
+      artist: null == artist
+          ? _value.artist
+          : artist // ignore: cast_nullable_to_non_nullable
+              as Artist,
       photo: freezed == photo
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
               as Uint8List?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ArtistCopyWith<$Res> get artist {
+    return $ArtistCopyWith<$Res>(_value.artist, (value) {
+      return _then(_value.copyWith(artist: value) as $Val);
+    });
   }
 }
 
@@ -99,8 +109,11 @@ abstract class _$$_SongCopyWith<$Res> implements $SongCopyWith<$Res> {
       {int id,
       String title,
       DateTime releaseDate,
-      int artistId,
+      Artist artist,
       @ByteArray() Uint8List? photo});
+
+  @override
+  $ArtistCopyWith<$Res> get artist;
 }
 
 /// @nodoc
@@ -115,7 +128,7 @@ class __$$_SongCopyWithImpl<$Res> extends _$SongCopyWithImpl<$Res, _$_Song>
     Object? id = null,
     Object? title = null,
     Object? releaseDate = null,
-    Object? artistId = null,
+    Object? artist = null,
     Object? photo = freezed,
   }) {
     return _then(_$_Song(
@@ -131,10 +144,10 @@ class __$$_SongCopyWithImpl<$Res> extends _$SongCopyWithImpl<$Res, _$_Song>
           ? _value.releaseDate
           : releaseDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      artistId: null == artistId
-          ? _value.artistId
-          : artistId // ignore: cast_nullable_to_non_nullable
-              as int,
+      artist: null == artist
+          ? _value.artist
+          : artist // ignore: cast_nullable_to_non_nullable
+              as Artist,
       photo: freezed == photo
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
@@ -150,7 +163,7 @@ class _$_Song with DiagnosticableTreeMixin implements _Song {
       {required this.id,
       required this.title,
       required this.releaseDate,
-      required this.artistId,
+      required this.artist,
       @ByteArray() this.photo});
 
   factory _$_Song.fromJson(Map<String, dynamic> json) => _$$_SongFromJson(json);
@@ -162,14 +175,14 @@ class _$_Song with DiagnosticableTreeMixin implements _Song {
   @override
   final DateTime releaseDate;
   @override
-  final int artistId;
+  final Artist artist;
   @override
   @ByteArray()
   final Uint8List? photo;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Song(id: $id, title: $title, releaseDate: $releaseDate, artistId: $artistId, photo: $photo)';
+    return 'Song(id: $id, title: $title, releaseDate: $releaseDate, artist: $artist, photo: $photo)';
   }
 
   @override
@@ -180,7 +193,7 @@ class _$_Song with DiagnosticableTreeMixin implements _Song {
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('releaseDate', releaseDate))
-      ..add(DiagnosticsProperty('artistId', artistId))
+      ..add(DiagnosticsProperty('artist', artist))
       ..add(DiagnosticsProperty('photo', photo));
   }
 
@@ -193,14 +206,13 @@ class _$_Song with DiagnosticableTreeMixin implements _Song {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.releaseDate, releaseDate) ||
                 other.releaseDate == releaseDate) &&
-            (identical(other.artistId, artistId) ||
-                other.artistId == artistId) &&
+            (identical(other.artist, artist) || other.artist == artist) &&
             const DeepCollectionEquality().equals(other.photo, photo));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, releaseDate, artistId,
+  int get hashCode => Object.hash(runtimeType, id, title, releaseDate, artist,
       const DeepCollectionEquality().hash(photo));
 
   @JsonKey(ignore: true)
@@ -222,7 +234,7 @@ abstract class _Song implements Song {
       {required final int id,
       required final String title,
       required final DateTime releaseDate,
-      required final int artistId,
+      required final Artist artist,
       @ByteArray() final Uint8List? photo}) = _$_Song;
 
   factory _Song.fromJson(Map<String, dynamic> json) = _$_Song.fromJson;
@@ -234,7 +246,7 @@ abstract class _Song implements Song {
   @override
   DateTime get releaseDate;
   @override
-  int get artistId;
+  Artist get artist;
   @override
   @ByteArray()
   Uint8List? get photo;

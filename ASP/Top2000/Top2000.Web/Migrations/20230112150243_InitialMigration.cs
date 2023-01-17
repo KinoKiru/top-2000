@@ -11,24 +11,25 @@ namespace Web.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Artists",
+                name: "Artist",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ArtistId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Photo = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
+                    Photo = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(MAX)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Artists", x => x.Id);
+                    table.PrimaryKey("PK_Artist", x => x.ArtistId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Songs",
+                name: "Song",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    SongId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: false),
                     ArtistId = table.Column<int>(type: "int", nullable: false),
@@ -37,18 +38,18 @@ namespace Web.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Songs", x => x.Id);
+                    table.PrimaryKey("PK_Song", x => x.SongId);
                     table.ForeignKey(
-                        name: "FK_Songs_Artists_ArtistId",
+                        name: "FK_Song_Artist_ArtistId",
                         column: x => x.ArtistId,
-                        principalTable: "Artists",
-                        principalColumn: "Id",
+                        principalTable: "Artist",
+                        principalColumn: "ArtistId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Songs_ArtistId",
-                table: "Songs",
+                name: "IX_Song_ArtistId",
+                table: "Song",
                 column: "ArtistId");
         }
 
@@ -56,10 +57,10 @@ namespace Web.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Songs");
+                name: "Song");
 
             migrationBuilder.DropTable(
-                name: "Artists");
+                name: "Artist");
         }
     }
 }
