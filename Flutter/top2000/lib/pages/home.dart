@@ -24,7 +24,7 @@ class _HomeState extends State<Home> {
       future: getSongs(length: 30),
       onLoad: (List<Song> data, BuildContext context) => Scaffold(
         appBar: AppBar(
-            toolbarHeight: sizeX < sizeY ? 100 : 60,
+            toolbarHeight: sizeX < sizeY ? 120 : 60,
             title: responsiveHomeAppBar(sizeX, sizeY, context)),
         body: TranslationWrapper(
           onLoad: (BuildContext context) => Padding(
