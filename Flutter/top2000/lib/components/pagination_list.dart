@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// TranslationWrapper
-/// Shorthand code for StreamBuilder widget
 class PaginationList<T> extends StatefulWidget {
   const PaginationList(
       {super.key,
