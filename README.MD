@@ -54,14 +54,39 @@
     Een mobiele app + website moet gerealiseerd worden in combinatie met een API en database. De beheerders moeten de mogelijkheid hebben om een Excel sheet te importeren. Er moet zowel gezocht en gefilterd worden op liedjes en artiesten.
 
 ### **Doelgroep**
-    ![Doelgroep](https://media.discordapp.net/attachments/1061934768440234034/1064897493869023232/top20002.png);
+    ![Doelgroep](https://media.discordapp.net/attachments/1061934768440234034/1064897493869023232/top20002.png)
 ### **Lettertype**
+    Roboto, 14-16px mobile, 16-24px desktop
 
 ### **Huiskleur**
     Dark mode:
         Primary: #BB86FC
-        Secondary: #
-        Bakground: #212121
+        Primary variant: #3700b3 
+        Secondary: #03DAC6
+        Bakground: #303030
+        Surface: #303030
+        Error: #CF6679
+        On Primary: #121212
+        On Secondary: #121212
+        on Background: #FFFFFF
+        On Surface: #FFFFFF
+        On Error: #000000
+        Text: #FFFFFFF
+    White mode:
+        Primary: #6200EE
+        Primary variant: #3700B3
+        Secondary: #03DAC6
+        Secondary variant: #018786
+        Bakground: #FFFFFF
+        Surface: #FFFFFF
+        Error: #B00020
+        On Primary: #FFFFFF
+        On Secondary: #000000
+        on Background: #000000
+        On Surface: #000000
+        On Error: #FFFFFF
+        Text: #000000
+
         
 ### **Layout schets**
     ____
