@@ -5,7 +5,8 @@ namespace Models
 {
     public class Song
     {
-        public int Id { get; set; }
+        [Key]
+        public int SongId { get; set; }
 
         [StringLength(75)]
         public string Title { get; set; } = string.Empty;

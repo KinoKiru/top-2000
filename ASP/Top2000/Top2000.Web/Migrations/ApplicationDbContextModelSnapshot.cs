@@ -23,11 +23,14 @@ namespace Web.Migrations
 
             modelBuilder.Entity("Models.Artist", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ArtistId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ArtistId"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -37,18 +40,39 @@ namespace Web.Migrations
                     b.Property<byte[]>("Photo")
                         .HasColumnType("varbinary(max)");
 
-                    b.HasKey("Id");
+                    b.Property<string>("WikiUrl")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("Artists");
+                    b.HasKey("ArtistId");
+
+                    b.ToTable("Artist");
+                });
+
+            modelBuilder.Entity("Models.Position", b =>
+                {
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SongId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Place")
+                        .HasColumnType("int");
+
+                    b.HasKey("Year", "SongId");
+
+                    b.HasIndex("SongId");
+
+                    b.ToTable("Position");
                 });
 
             modelBuilder.Entity("Models.Song", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("SongId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SongId"));
 
                     b.Property<int>("ArtistId")
                         .HasColumnType("int");
@@ -64,11 +88,40 @@ namespace Web.Migrations
                         .HasMaxLength(75)
                         .HasColumnType("nvarchar(75)");
 
-                    b.HasKey("Id");
+                    b.HasKey("SongId");
 
                     b.HasIndex("ArtistId");
 
-                    b.ToTable("Songs");
+                    b.ToTable("Song");
+                });
+
+            modelBuilder.Entity("Models.ViewModels.ArtistWithSongsVM", b =>
+                {
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ReleaseYear")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable((string)null);
+
+                    b.ToView("vwArtistWithSongs", (string)null);
+                });
+
+            modelBuilder.Entity("Models.Position", b =>
+                {
+                    b.HasOne("Models.Song", "Song")
+                        .WithMany()
+                        .HasForeignKey("SongId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Song");
                 });
 
             modelBuilder.Entity("Models.Song", b =>

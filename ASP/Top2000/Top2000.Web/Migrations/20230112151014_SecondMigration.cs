@@ -12,7 +12,7 @@ namespace Web.Migrations
         {
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
-                table: "Artists",
+                table: "Artist",
                 type: "nvarchar(75)",
                 maxLength: 75,
                 nullable: false,
@@ -25,7 +25,7 @@ namespace Web.Migrations
         {
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
-                table: "Artists",
+                table: "Artist",
                 type: "nvarchar(max)",
                 nullable: false,
                 oldClrType: typeof(string),
