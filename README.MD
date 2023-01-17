@@ -41,20 +41,20 @@
 
 ---
 
-## **Plan van eisen**
+## **Programma van eisen**
 
 
 ### **Inleiding**
-    Hier kun je alles lezen over ons plan van eisen.
+    Hier kun je alles lezen over ons programma van eisen.
 
 ### **Het bedrijf**
-     De radio zender NPO Radio 2 zend elk jaar de top 2000 uit als evenement. Verder zenden ze ook elke dag normale radio uit.
+    De radio zender NPO Radio 2 zend elk jaar de TOP2000 uit als evenement. Verder zenden ze ook elke dag normale radio uit. 
 
 ### **Probleemstelling**
-     
+    Een mobiele app + website moet gerealiseerd worden in combinatie met een API en database. De beheerders moeten de mogelijkheid hebben om een Excel sheet te importeren. Er moet zowel gezocht en gefilterd worden op liedjes en artiesten.
 
 ### **Doelgroep**
-
+    ![Doelgroep](https://media.discordapp.net/attachments/1061934768440234034/1064897493869023232/top20002.png);
 ### **Lettertype**
 
 ### **Huiskleur**
