@@ -4,6 +4,7 @@ using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230119125251_spDecreaseOfPosition")]
+    partial class spDecreaseOfPosition
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -109,20 +112,6 @@ namespace Web.Migrations
                     b.ToTable((string)null);
 
                     b.ToView("vwArtistWithSongs", (string)null);
-                });
-
-            modelBuilder.Entity("Models.ViewModels.DecreaseOfPositionVM", b =>
-                {
-                    b.ToTable((string)null);
-
-                    b.ToView("spDecreaseOfPositon", (string)null);
-                });
-
-            modelBuilder.Entity("Models.ViewModels.NewComersVM", b =>
-                {
-                    b.ToTable((string)null);
-
-                    b.ToView("spNewComers", (string)null);
                 });
 
             modelBuilder.Entity("Models.ViewModels.SongsOfArtistVM", b =>
