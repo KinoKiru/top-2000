@@ -1,7 +1,9 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:top2000/models/song.dart';
+import 'package:top2000/pages/artist.dart';
 
 class ListSong extends StatefulWidget {
   const ListSong({super.key, required this.song});
@@ -47,9 +49,14 @@ class _ListSongState extends State<ListSong> {
                       widget.song.title,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    Text(
-                      widget.song.artist.name,
-                      overflow: TextOverflow.ellipsis,
+                    InkWell(
+                      onTap: () => PersistentNavBarNavigator.pushNewScreen(
+                          context,
+                          screen: ArtistInfo(artist: widget.song.artist)),
+                      child: Text(
+                        widget.song.artist.name,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     )
                   ],
                 ),
