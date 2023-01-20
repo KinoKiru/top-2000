@@ -11,5 +11,8 @@
     "home": "Comienzo",
     "playlist": "lista de reproducción",
     "settings": "Ajustes"
+  },
+  "artist": {
+    "description": "Sobre el artista"
   }
 }

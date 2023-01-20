@@ -1,6 +1,7 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/material_symbols.dart';
 import 'package:top2000/globals.dart';
@@ -81,8 +82,27 @@ class _ArtistInfoState extends State<ArtistInfo> {
               ),
             ),
           ),
-          SingleChildScrollView(
-            child: Text(widget.artist.description),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    FlutterI18n.translate(context, 'artist.description'),
+                    style: const TextStyle(
+                        fontSize: 17, fontWeight: FontWeight.w500),
+                  ),
+                  const SizedBox(
+                    height: 6,
+                  ),
+                  Text(
+                    widget.artist.description,
+                    style: const TextStyle(fontStyle: FontStyle.italic),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),

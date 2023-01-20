@@ -11,5 +11,8 @@
     "home": "Start",
     "playlist": "Playlist",
     "settings": "Settings"
+  },
+  "artist": {
+    "description": "About artist"
   }
 }

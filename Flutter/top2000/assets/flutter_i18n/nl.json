@@ -11,5 +11,8 @@
         "home": "Start",
         "settings": "Instellingen",
         "playlist": "Afspeellijst"
+    },
+    "artist": {
+        "description": "Over artiest"
     }
 }

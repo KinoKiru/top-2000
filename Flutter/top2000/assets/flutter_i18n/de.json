@@ -1,0 +1,15 @@
+{
+  "home": {
+    "banner": "Hallo!",
+    "search": "Suchen"
+  },
+  "navigation": {
+    "home": "Start",
+    "playlist": "Wiedergabeliste",
+    "settings": "Einstellungen"
+  },
+  "settings": {
+    "color": "Farbmodus",
+    "locales": "Spracheinstellungen"
+  }
+}

@@ -78,7 +78,7 @@ class _SettingsState extends State<Settings> {
 
 List<Widget> localeButtons(BuildContext context) {
   List<Widget> buttons = List<Widget>.empty(growable: true);
-  for (final String locale in <String>['nl', 'es', 'en']) {
+  for (final String locale in <String>['nl', 'es', 'en', 'de']) {
     buttons.add(ElevatedButton(
         onPressed: () async {
           await FlutterI18n.refresh(context, Locale(locale));
