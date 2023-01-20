@@ -4,8 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/material_symbols.dart';
+import 'package:top2000/components/async_builder.dart';
+import 'package:top2000/components/list_song.dart';
+import 'package:top2000/components/pagination_list.dart';
+import 'package:top2000/generators/songs.dart';
 import 'package:top2000/globals.dart';
 import 'package:top2000/models/artist.dart';
+import 'package:top2000/models/song.dart';
+import 'package:top2000/utils/utils.dart';
 
 class ArtistInfo extends StatefulWidget {
   const ArtistInfo({super.key, required this.artist});
@@ -94,11 +100,39 @@ class _ArtistInfoState extends State<ArtistInfo> {
                         fontSize: 17, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(
-                    height: 6,
+                    height: 1,
                   ),
                   Text(
                     widget.artist.description,
                     style: const TextStyle(fontStyle: FontStyle.italic),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      launchSite(
+                          'https://nl.wikipedia.org/wiki/Michael_Jackson');
+                    },
+                    child: const Text('wikipedia'),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    FlutterI18n.translate(context, 'artist.songs'),
+                    style: const TextStyle(
+                        fontSize: 17, fontWeight: FontWeight.w500),
+                  ),
+                  SizedBox(
+                    height: sizeY / 3,
+                    child: SimpleAsyncBuilder<List<Song>>(
+                      future: getSongs(length: 10),
+                      onLoad: (List<Song> data, BuildContext context) =>
+                          PaginationList<Song>(
+                        items: data,
+                        itemBuilder: (BuildContext context, int index) =>
+                            ListSong(song: data[index]),
+                        onEnd: () {},
+                      ),
+                    ),
                   ),
                 ],
               ),

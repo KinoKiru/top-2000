@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:top2000/components/translation_wrapper.dart';
+import 'package:url_launcher/url_launcher.dart' as ul;
 
 Widget responsiveHomeAppBar(double sizeX, double sizeY, BuildContext context,
     {String title = 'Top2000'}) {
@@ -56,4 +57,18 @@ Widget responsiveHomeAppBar(double sizeX, double sizeY, BuildContext context,
       );
     }
   });
+}
+
+Future<void> launchSite(String url) async {
+  final Uri site = Uri(
+    scheme: 'https',
+    path: url,
+  );
+  if (!await ul.launchUrl(
+    site,
+    mode: ul.LaunchMode.inAppWebView,
+  )) {
+    throw 'Could not launch';
+  }
+  return;
 }

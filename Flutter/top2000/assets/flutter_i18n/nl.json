@@ -13,6 +13,7 @@
         "playlist": "Afspeellijst"
     },
     "artist": {
-        "description": "Over artiest"
+        "description": "Over artiest",
+        "songs": "Liedjes van artiest"
     }
 }
