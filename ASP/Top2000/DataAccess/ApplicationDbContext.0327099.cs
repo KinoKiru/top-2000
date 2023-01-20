@@ -8,5 +8,6 @@ namespace DataAccess
         public DbSet<DecreaseOfPositionVM> DecreaseOfPosition { get; set; }
         public DbSet<NewComersVM> NewComers { get; set; }
         public DbSet<SamePositionVM> SamePosition { get; set; }
+        public DbSet<TopThreeArtistVM> TopThreeArtist { get; set; }
     }
 }

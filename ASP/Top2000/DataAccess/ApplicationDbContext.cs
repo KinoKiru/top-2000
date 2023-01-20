@@ -22,6 +22,7 @@ namespace DataAccess
             modelBuilder.Entity<DecreaseOfPositionVM>().ToView("spDecreaseOfPositon").HasNoKey();
             modelBuilder.Entity<NewComersVM>().ToView("spNewCOmers").HasNoKey();
             modelBuilder.Entity<SamePositionVM>().ToView("spSamePosition").HasNoKey();
+            modelBuilder.Entity<TopThreeArtistVM>().ToView("spTopThreeArtist").HasNoKey();
         }
     }
 }
