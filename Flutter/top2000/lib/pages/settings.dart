@@ -63,7 +63,7 @@ class _SettingsState extends State<Settings> {
                       ),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: localeButtons(context)),
+                          children: localeButtons(context, preferences)),
                       Align(
                           alignment: FractionalOffset.bottomCenter,
                           child:
@@ -76,11 +76,13 @@ class _SettingsState extends State<Settings> {
   }
 }
 
-List<Widget> localeButtons(BuildContext context) {
+List<Widget> localeButtons(
+    BuildContext context, SharedPreferences preferences) {
   List<Widget> buttons = List<Widget>.empty(growable: true);
   for (final String locale in <String>['nl', 'es', 'en', 'de']) {
     buttons.add(ElevatedButton(
         onPressed: () async {
+          preferences.setString('locale', locale);
           await FlutterI18n.refresh(context, Locale(locale));
           await Jiffy.locale(locale);
         },

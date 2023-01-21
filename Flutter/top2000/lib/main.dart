@@ -8,11 +8,16 @@ import 'package:top2000/components/navigation.dart';
 import 'package:top2000/globals.dart';
 
 void main() async {
-  runApp(const App());
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  runApp(App(
+    locale: prefs.getString('locale') ?? 'nl',
+  ));
 }
 
 class App extends StatefulWidget {
-  const App({super.key});
+  const App({super.key, required this.locale});
+  final String locale;
   @override
   State<App> createState() => _AppState();
 }
@@ -24,7 +29,7 @@ class _AppState extends State<App> {
     if (isDark != null) {
       isDarkMode = isDark;
     }
-    await Jiffy.locale('nl');
+    await Jiffy.locale(widget.locale);
     return true;
   }
 
@@ -40,7 +45,7 @@ class _AppState extends State<App> {
         localizationsDelegates: <LocalizationsDelegate<dynamic>>[
           FlutterI18nDelegate(
             translationLoader: FileTranslationLoader(
-              forcedLocale: const Locale('nl'),
+              forcedLocale: Locale(widget.locale),
               fallbackFile: 'en',
               useCountryCode: false,
             ),
