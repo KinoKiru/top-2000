@@ -10,6 +10,10 @@ import 'package:top2000/globals.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool? isDark = prefs.getBool('isDark');
+  if (isDark != null) {
+    isDarkMode = isDark;
+  }
   runApp(App(
     locale: prefs.getString('locale') ?? 'nl',
   ));
@@ -25,10 +29,6 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   Future<bool>? loadColorMode() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool? isDark = prefs.getBool('isDark');
-    if (isDark != null) {
-      isDarkMode = isDark;
-    }
     await Jiffy.locale(widget.locale);
     return true;
   }
