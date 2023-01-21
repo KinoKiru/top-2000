@@ -13,6 +13,8 @@
     "settings": "Ajustes"
   },
   "artist": {
-    "description": "Sobre el artista"
+    "description": "Sobre el artista",
+    "moreInfo": "Más información",
+    "songs": "Canciones de artistas"
   }
 }

@@ -11,5 +11,10 @@
   "settings": {
     "color": "Farbmodus",
     "locales": "Spracheinstellungen"
+  },
+  "artist": {
+    "description": "Über Künstler",
+    "moreInfo": "Mehr Informationen",
+    "songs": "Künstlerlieder"
   }
 }

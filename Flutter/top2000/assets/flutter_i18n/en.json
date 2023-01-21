@@ -13,6 +13,8 @@
     "settings": "Settings"
   },
   "artist": {
-    "description": "About artist"
+    "description": "About artist",
+    "moreInfo": "More information",
+    "songs": "Artist songs"
   }
 }

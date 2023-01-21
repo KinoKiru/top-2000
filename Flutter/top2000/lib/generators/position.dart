@@ -1,7 +1,7 @@
 import 'package:faker/faker.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:top2000/generators/songs.dart';
-import 'package:top2000/models/Position.dart';
+import 'package:top2000/models/position.dart';
 import 'package:top2000/models/song.dart';
 
 Future<List<Position>> getPosition({int length = 1}) async {

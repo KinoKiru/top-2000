@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/material_symbols.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:top2000/components/async_builder.dart';
 import 'package:top2000/components/list_song.dart';
 import 'package:top2000/components/pagination_list.dart';
@@ -12,6 +13,7 @@ import 'package:top2000/globals.dart';
 import 'package:top2000/models/artist.dart';
 import 'package:top2000/models/song.dart';
 import 'package:top2000/utils/utils.dart';
+import 'package:top2000/utils/extensions.dart';
 
 class ArtistInfo extends StatefulWidget {
   const ArtistInfo({super.key, required this.artist});
@@ -57,9 +59,9 @@ class _ArtistInfoState extends State<ArtistInfo> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.black.withOpacity(0.6),
                         ),
-                        child: Icon(
+                        child: const Icon(
                           CupertinoIcons.arrow_left,
-                          color: isDarkMode ? Colors.white : Colors.black,
+                          color: Colors.white,
                         )),
                   ),
                   Container(
@@ -78,7 +80,9 @@ class _ArtistInfoState extends State<ArtistInfo> {
                           child: Text(
                             widget.artist.name,
                             style: const TextStyle(
-                                fontSize: 30, fontWeight: FontWeight.w400),
+                                fontSize: 30,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white),
                           ),
                         )
                       ],
@@ -107,11 +111,12 @@ class _ArtistInfoState extends State<ArtistInfo> {
                     style: const TextStyle(fontStyle: FontStyle.italic),
                   ),
                   TextButton(
-                    onPressed: () {
+                    onPressed: () async {
                       launchSite(
-                          'https://nl.wikipedia.org/wiki/Michael_Jackson');
+                          '${FlutterI18n.currentLocale(context)?.languageCode}.wikipedia.org/wiki/${widget.artist.name.capitalizeAll().replaceAll(' ', '_')}');
                     },
-                    child: const Text('wikipedia'),
+                    child:
+                        Text(FlutterI18n.translate(context, 'artist.moreInfo')),
                   ),
                   const SizedBox(
                     height: 20,
