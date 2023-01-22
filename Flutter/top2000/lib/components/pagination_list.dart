@@ -20,6 +20,7 @@ class _PaginationListState<T> extends State<PaginationList<T>> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      padding: EdgeInsets.zero,
       controller: _scrollController,
       itemCount: widget.items.length,
       itemBuilder: widget.itemBuilder,
