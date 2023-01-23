@@ -12,7 +12,7 @@ namespace Web.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             StringBuilder sb = new();
-            sb.Append("CREATE PROCEDURE spSongsOfArtist");
+            sb.Append(" CREATE PROCEDURE spSongsOfArtist");
             sb.Append(" @ARTIST NVARCHAR(100)");
             sb.Append(" AS");
             sb.Append(" SELECT s.Title , s.ReleaseYear");
