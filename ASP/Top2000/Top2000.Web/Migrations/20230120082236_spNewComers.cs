@@ -16,7 +16,7 @@ namespace Web.Migrations
 FROM Song s
 JOIN Position p ON p.SongId = s.SongId
 JOIN Artist a ON a.ArtistId = s.ArtistId
-WHERE p.Year = @year AND NOT EXISTS(SELECT DISTINCT Position.SongId FROM Song JOIN Position ON Position.SongId = s.SongId WHERE Position.Year = @year - 1)
+WHERE p.Year = @year AND NOT EXISTS(SELECT DISTINCT Position.SongId FROM Song JOIN Position ON Position.SongId = s.SongId WHERE Position.Year < @year)
 ORDER BY p.Place ");
 
             migrationBuilder.Sql(sb.ToString());
