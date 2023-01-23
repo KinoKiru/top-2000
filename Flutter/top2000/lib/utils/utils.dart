@@ -17,7 +17,7 @@ Widget responsiveHomeAppBar(double sizeX, double sizeY, BuildContext context,
             children: <Widget>[
               Text(title),
               InkWell(
-                onTap: () => Scaffold.of(context).openDrawer(),
+                onTap: () => Scaffold.of(context).openEndDrawer(),
                 child: const Icon(CupertinoIcons.slider_horizontal_3),
               )
             ],
@@ -62,6 +62,13 @@ Widget responsiveHomeAppBar(double sizeX, double sizeY, BuildContext context,
               ),
             ),
           ),
+          const SizedBox(
+            width: 10,
+          ),
+          InkWell(
+            onTap: () => Scaffold.of(context).openEndDrawer(),
+            child: const Icon(CupertinoIcons.slider_horizontal_3),
+          )
         ],
       );
     }

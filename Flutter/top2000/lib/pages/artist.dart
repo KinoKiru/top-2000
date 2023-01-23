@@ -36,9 +36,10 @@ class _ArtistInfoState extends State<ArtistInfo> {
                     fit: BoxFit.fill,
                     image: NetworkImage(
                       faker.image.image(
-                          width: (sizeX).floor(),
-                          height: (sizeY / 4).floor(),
-                          random: true),
+                        width: (sizeX).floor(),
+                        height: (sizeY / 4).floor(),
+                        random: true,
+                      ),
                     ),
                   ),
                   color: isDarkMode ? Colors.grey.shade700 : Colors.white38),
@@ -68,13 +69,12 @@ class _ArtistInfoState extends State<ArtistInfo> {
                           (sizeY > sizeX ? (sizeY / 4) / 4 : (sizeY / 3) / 3)
                               .floorToDouble(),
                       decoration: const BoxDecoration(
-                          gradient: LinearGradient(
-                              begin: Alignment.bottomCenter,
-                              end: Alignment.topCenter,
-                              colors: <Color>[
-                            Colors.black,
-                            Colors.transparent
-                          ])),
+                        gradient: LinearGradient(
+                          begin: Alignment.bottomCenter,
+                          end: Alignment.topCenter,
+                          colors: <Color>[Colors.black, Colors.transparent],
+                        ),
+                      ),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: <Widget>[
@@ -83,9 +83,10 @@ class _ArtistInfoState extends State<ArtistInfo> {
                             child: Text(
                               widget.artist.name,
                               style: const TextStyle(
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white),
+                                fontSize: 30,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white,
+                              ),
                             ),
                           )
                         ],
@@ -105,9 +106,6 @@ class _ArtistInfoState extends State<ArtistInfo> {
                       FlutterI18n.translate(context, 'artist.description'),
                       style: const TextStyle(
                           fontSize: 17, fontWeight: FontWeight.w500),
-                    ),
-                    const SizedBox(
-                      height: 1,
                     ),
                     Text(
                       widget.artist.description,

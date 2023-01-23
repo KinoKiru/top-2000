@@ -28,29 +28,39 @@ class _HomeState extends State<Home> {
           child: ListView(
             // Important: Remove any padding from the ListView.
             padding: EdgeInsets.zero,
-            children: [
-              ListTile(
-                leading: Icon(
-                  Icons.home,
-                ),
-                title: const Text('Page 1'),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                leading: Icon(
-                  Icons.train,
-                ),
-                title: const Text('Page 2'),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
+            children: <Widget>[
+              SafeArea(
+                  child: Column(
+                children: <Widget>[
+                  InkWell(
+                    onTap: () => Navigator.pop(context),
+                    child: const Icon(CupertinoIcons.clear_thick),
+                  ),
+                  ListTile(
+                    leading: const Icon(
+                      Icons.home,
+                    ),
+                    title: const Text('Page 1'),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(
+                      Icons.train,
+                    ),
+                    title: const Text('Page 2'),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              ))
             ],
           ),
         ),
         appBar: AppBar(
+            actions: <Widget>[Container()],
             toolbarHeight: sizeX < sizeY ? 120 : 60,
             title: responsiveHomeAppBar(sizeX, sizeY, context)),
         body: TranslationWrapper(
