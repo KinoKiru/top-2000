@@ -2,9 +2,6 @@ import 'package:faker/faker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
-import 'package:iconify_flutter/iconify_flutter.dart';
-import 'package:iconify_flutter/icons/material_symbols.dart';
-import 'package:jiffy/jiffy.dart';
 import 'package:top2000/components/async_builder.dart';
 import 'package:top2000/components/list_song.dart';
 import 'package:top2000/components/pagination_list.dart';
@@ -138,7 +135,7 @@ class _ArtistInfoState extends State<ArtistInfo> {
                       ),
                     ),
                     SizedBox(
-                      height: sizeY / 3,
+                      height: sizeY / 3.2,
                       child: SimpleAsyncBuilder<List<Song>>(
                         future: getSongs(length: 10),
                         onLoad: (List<Song> data, BuildContext context) =>

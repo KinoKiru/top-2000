@@ -16,6 +16,7 @@ class PaginationList<T> extends StatefulWidget {
 
 class _PaginationListState<T> extends State<PaginationList<T>> {
   final ScrollController _scrollController = ScrollController();
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -25,5 +26,25 @@ class _PaginationListState<T> extends State<PaginationList<T>> {
       itemCount: widget.items.length,
       itemBuilder: widget.itemBuilder,
     );
+  }
+
+  @override
+  void initState() {
+    //added the pagination function with listener
+    _scrollController.addListener(pagination);
+    super.initState();
+  }
+
+  //&& (_subCategoryModel.products.length < widget.items.length)
+  void pagination() {
+    if ((_scrollController.offset ==
+        _scrollController.position.maxScrollExtent)) {
+      setState(() {
+        isLoading = true;
+        //page += 1;
+        widget.onEnd();
+        //add api for load the more data according to new page
+      });
+    }
   }
 }

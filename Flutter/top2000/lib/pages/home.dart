@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
     final double sizeY = MediaQuery.of(context).size.height;
 
     return SimpleAsyncBuilder<List<Song>>(
-      future: getSongs(length: 30),
+      future: getSongs(length: 10),
       onLoad: (List<Song> data, BuildContext context) => Scaffold(
         appBar: AppBar(
             toolbarHeight: sizeX < sizeY ? 120 : 60,
@@ -33,7 +33,9 @@ class _HomeState extends State<Home> {
               items: data,
               itemBuilder: (BuildContext context, int index) =>
                   ListSong(song: data[index]),
-              onEnd: () {},
+              onEnd: () async {
+                data.addAll(await getSongs());
+              },
             ),
           ),
         ),

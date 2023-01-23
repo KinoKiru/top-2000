@@ -8,7 +8,6 @@ import 'package:top2000/models/song.dart';
 Future<List<Song>> getSongs({int length = 5, bool withImage = false}) async {
   List<Song> list = List<Song>.empty(growable: true);
   final Faker faker = Faker();
-
   for (int i = 0; i < length; i++) {
     String img = withImage
         ? faker.image.image(width: 120, height: 80, random: true)
