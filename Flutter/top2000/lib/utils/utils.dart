@@ -12,7 +12,16 @@ Widget responsiveHomeAppBar(double sizeX, double sizeY, BuildContext context,
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Text(title),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(title),
+              InkWell(
+                onTap: () => Scaffold.of(context).openDrawer(),
+                child: const Icon(CupertinoIcons.slider_horizontal_3),
+              )
+            ],
+          ),
           const SizedBox(
             height: 10,
           ),

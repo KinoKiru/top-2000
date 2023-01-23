@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:top2000/components/async_builder.dart';
 import 'package:top2000/components/list_song.dart';
@@ -21,8 +22,34 @@ class _HomeState extends State<Home> {
     final double sizeY = MediaQuery.of(context).size.height;
 
     return SimpleAsyncBuilder<List<Song>>(
-      future: getSongs(length: 10),
+      future: getSongs(length: 5),
       onLoad: (List<Song> data, BuildContext context) => Scaffold(
+        endDrawer: Drawer(
+          child: ListView(
+            // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: [
+              ListTile(
+                leading: Icon(
+                  Icons.home,
+                ),
+                title: const Text('Page 1'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.train,
+                ),
+                title: const Text('Page 2'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        ),
         appBar: AppBar(
             toolbarHeight: sizeX < sizeY ? 120 : 60,
             title: responsiveHomeAppBar(sizeX, sizeY, context)),
@@ -30,11 +57,11 @@ class _HomeState extends State<Home> {
           onLoad: (BuildContext context) => Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
             child: PaginationList<Song>(
-              items: data,
-              itemBuilder: (BuildContext context, int index) =>
-                  ListSong(song: data[index]),
+              preloadItems: data,
+              itemBuilder: (BuildContext context, Song item, int index) =>
+                  ListSong(song: item),
               onEnd: () async {
-                data.addAll(await getSongs());
+                return await getSongs();
               },
             ),
           ),

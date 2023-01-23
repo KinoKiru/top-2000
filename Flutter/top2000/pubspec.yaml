@@ -51,6 +51,7 @@ dependencies:
   flutter_native_splash: ^2.2.16
   faker: ^2.1.0
   url_launcher: ^6.1.7
+  pagination_view: ^2.0.0
 
 dev_dependencies:
   flutter_test:

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:top2000/components/async_builder.dart';
 import 'package:top2000/components/list_song.dart';
-import 'package:top2000/components/pagination_list.dart';
 import 'package:top2000/components/translation_wrapper.dart';
 import 'package:top2000/generators/songs.dart';
 import 'package:top2000/globals.dart';
@@ -52,16 +51,17 @@ class _ArtistInfoState extends State<ArtistInfo> {
                     Padding(
                       padding: const EdgeInsets.only(left: 4.0, top: 4.0),
                       child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.black.withOpacity(0.6),
-                          ),
-                          child: const Icon(
-                            CupertinoIcons.arrow_left,
-                            color: Colors.white,
-                          )),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black.withOpacity(0.6),
+                        ),
+                        child: const Icon(
+                          CupertinoIcons.arrow_left,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                     Container(
                       height:
@@ -135,17 +135,16 @@ class _ArtistInfoState extends State<ArtistInfo> {
                       ),
                     ),
                     SizedBox(
-                      height: sizeY / 3.2,
+                      height: sizeY / 2.3,
                       child: SimpleAsyncBuilder<List<Song>>(
-                        future: getSongs(length: 10),
-                        onLoad: (List<Song> data, BuildContext context) =>
-                            PaginationList<Song>(
-                          items: data,
-                          itemBuilder: (BuildContext context, int index) =>
-                              ListSong(song: data[index]),
-                          onEnd: () {},
-                        ),
-                      ),
+                          future: getSongs(length: 10),
+                          onLoad: (List<Song> data, BuildContext context) =>
+                              ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  itemCount: data.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) =>
+                                          ListSong(song: data[index]))),
                     ),
                   ],
                 ),
