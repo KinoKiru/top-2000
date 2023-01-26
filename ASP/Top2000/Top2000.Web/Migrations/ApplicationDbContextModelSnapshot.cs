@@ -111,6 +111,27 @@ namespace Web.Migrations
                     b.ToView("vwArtistWithSongs", (string)null);
                 });
 
+            modelBuilder.Entity("Models.ViewModels.DecreaseOfPositionVM", b =>
+                {
+                    b.ToTable((string)null);
+
+                    b.ToView("spDecreaseOfPositon", (string)null);
+                });
+
+            modelBuilder.Entity("Models.ViewModels.NewComersVM", b =>
+                {
+                    b.ToTable((string)null);
+
+                    b.ToView("spNewCOmers", (string)null);
+                });
+
+            modelBuilder.Entity("Models.ViewModels.SamePositionVM", b =>
+                {
+                    b.ToTable((string)null);
+
+                    b.ToView("spSamePosition", (string)null);
+                });
+
             modelBuilder.Entity("Models.ViewModels.SongsOfArtistVM", b =>
                 {
                     b.Property<int?>("ReleaseYear")

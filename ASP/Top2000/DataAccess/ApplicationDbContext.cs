@@ -4,7 +4,7 @@ using Models.ViewModels;
 
 namespace DataAccess
 {
-    public class ApplicationDbContext : DbContext
+    public partial class ApplicationDbContext : DbContext
     {
         public DbSet<Artist> Artist { get; set; }
         public DbSet<Song> Song { get; set; }
@@ -19,6 +19,10 @@ namespace DataAccess
             modelBuilder.Entity<Position>().HasKey("Year", "SongId");
             modelBuilder.Entity<ArtistWithSongsVM>().ToView("vwArtistWithSongs").HasNoKey();
             modelBuilder.Entity<SongsOfArtistVM>().ToView("spSongsOfArtist").HasNoKey();
+            modelBuilder.Entity<DecreaseOfPositionVM>().ToView("spDecreaseOfPositon").HasNoKey();
+            modelBuilder.Entity<NewComersVM>().ToView("spNewCOmers").HasNoKey();
+            modelBuilder.Entity<SamePositionVM>().ToView("spSamePosition").HasNoKey();
+            modelBuilder.Entity<TopThreeArtistVM>().ToView("spTopThreeArtist").HasNoKey();
         }
     }
 }
