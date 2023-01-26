@@ -5,7 +5,7 @@ using Models.ViewModels;
 
 namespace DataAccess
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public partial class ApplicationDbContext : IdentityDbContext
     {
         public DbSet<Artist> Artist { get; set; }
         public DbSet<Song> Song { get; set; }
