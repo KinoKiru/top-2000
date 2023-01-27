@@ -1,23 +1,26 @@
 {
-  "home": {
-    "banner": "¡Hola!",
-    "search": "Buscar"
-  },
-  "settings": {
-    "locales": "Configuración de lenguaje",
-    "color": "Modo de color"
-  },
-  "navigation": {
-    "home": "Comienzo",
-    "playlist": "lista de reproducción",
-    "settings": "Ajustes"
-  },
   "artist": {
     "description": "Sobre el artista",
     "moreInfo": "Más información",
     "songs": "Canciones de artistas"
   },
   "drawer": {
-    "year": "año"
+    "decrease": "Pantalla caída",
+    "increase": "Mostrar Ascendido",
+    "reversed": "Orden inverso",
+    "year": "año de lista"
+  },
+  "home": {
+    "banner": "¡Hola!",
+    "search": "Buscar"
+  },
+  "navigation": {
+    "home": "Comienzo",
+    "playlist": "lista de reproducción",
+    "settings": "Ajustes"
+  },
+  "settings": {
+    "color": "Modo de color",
+    "locales": "Configuración de lenguaje"
   }
 }

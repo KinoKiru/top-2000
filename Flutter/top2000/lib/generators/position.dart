@@ -7,13 +7,17 @@ import 'package:top2000/models/song.dart';
 Future<List<Position>> getPosition({int length = 1}) async {
   List<Position> list = List<Position>.empty(growable: true);
   final Faker faker = Faker();
+  final int year = Jiffy(
+          '${faker.randomGenerator.integer(2022, min: 1940)}-10-10', 'y-MM-dd')
+      .year;
 
   for (int i = 0; i < length; i++) {
     list.add(
       Position(
         place: faker.randomGenerator.integer(2000),
+        oldPlace: faker.randomGenerator.integer(2000),
         song: await getSongs(length: 1).then((List<Song> value) => value[0]),
-        year: Jiffy(faker.date.year(minYear: 1940, maxYear: Jiffy().year)).year,
+        year: year,
       ),
     );
   }

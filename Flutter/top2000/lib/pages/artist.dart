@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:top2000/components/async_builder.dart';
-import 'package:top2000/components/list_song.dart';
+import 'package:top2000/components/artist_list_item.dart';
 import 'package:top2000/components/translation_wrapper.dart';
 import 'package:top2000/generators/songs.dart';
 import 'package:top2000/globals.dart';
@@ -135,14 +135,16 @@ class _ArtistInfoState extends State<ArtistInfo> {
                     SizedBox(
                       height: sizeY / 2.3,
                       child: SimpleAsyncBuilder<List<Song>>(
-                          future: getSongs(length: 10),
-                          onLoad: (List<Song> data, BuildContext context) =>
-                              ListView.builder(
-                                  padding: EdgeInsets.zero,
-                                  itemCount: data.length,
-                                  itemBuilder:
-                                      (BuildContext context, int index) =>
-                                          ListSong(song: data[index]))),
+                        future: getSongs(
+                            length: 10, artistName: widget.artist.name),
+                        onLoad: (List<Song> data, BuildContext context) =>
+                            ListView.builder(
+                          padding: EdgeInsets.zero,
+                          itemCount: data.length,
+                          itemBuilder: (BuildContext context, int index) =>
+                              ArtistList(song: data[index]),
+                        ),
+                      ),
                     ),
                   ],
                 ),

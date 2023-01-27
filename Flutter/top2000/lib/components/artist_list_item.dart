@@ -5,15 +5,15 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:top2000/models/song.dart';
 import 'package:top2000/pages/artist.dart';
 
-class ListSong extends StatefulWidget {
-  const ListSong({super.key, required this.song});
+class ArtistList extends StatefulWidget {
+  const ArtistList({super.key, required this.song});
   final Song song;
 
   @override
-  State<ListSong> createState() => _ListSongState();
+  State<ArtistList> createState() => _ArtistListState();
 }
 
-class _ListSongState extends State<ListSong> {
+class _ArtistListState extends State<ArtistList> {
   @override
   Widget build(BuildContext context) {
     final double sizeX = MediaQuery.of(context).size.width;
@@ -49,14 +49,9 @@ class _ListSongState extends State<ListSong> {
                       widget.song.title,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    InkWell(
-                      onTap: () => PersistentNavBarNavigator.pushNewScreen(
-                          context,
-                          screen: ArtistInfo(artist: widget.song.artist)),
-                      child: Text(
-                        widget.song.artist.name,
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                    Text(
+                      widget.song.artist.name,
+                      overflow: TextOverflow.ellipsis,
                     )
                   ],
                 ),

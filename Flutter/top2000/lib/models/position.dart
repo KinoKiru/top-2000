@@ -11,6 +11,7 @@ class Position with _$Position {
     required int year,
     required Song song,
     required int place,
+    int? oldPlace,
   }) = _Position;
 
   factory Position.fromJson(Map<String, Object?> json) =>

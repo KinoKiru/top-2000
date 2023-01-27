@@ -13,7 +13,10 @@
         "playlist": "Afspeellijst"
     },
     "drawer": {
-        "year": "Jaartal"
+        "year": "Jaar van lijst",
+        "reversed": "Omgekeerde volgorde",
+        "decrease": "Gedaalde weergeven",
+        "increase": "Gestegen weergeven"
     },
     "artist": {
         "description": "Over artiest",

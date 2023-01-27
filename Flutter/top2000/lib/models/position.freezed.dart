@@ -23,6 +23,7 @@ mixin _$Position {
   int get year => throw _privateConstructorUsedError;
   Song get song => throw _privateConstructorUsedError;
   int get place => throw _privateConstructorUsedError;
+  int? get oldPlace => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $PositionCopyWith<$Res> {
   factory $PositionCopyWith(Position value, $Res Function(Position) then) =
       _$PositionCopyWithImpl<$Res, Position>;
   @useResult
-  $Res call({int year, Song song, int place});
+  $Res call({int year, Song song, int place, int? oldPlace});
 
   $SongCopyWith<$Res> get song;
 }
@@ -56,6 +57,7 @@ class _$PositionCopyWithImpl<$Res, $Val extends Position>
     Object? year = null,
     Object? song = null,
     Object? place = null,
+    Object? oldPlace = freezed,
   }) {
     return _then(_value.copyWith(
       year: null == year
@@ -70,6 +72,10 @@ class _$PositionCopyWithImpl<$Res, $Val extends Position>
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
               as int,
+      oldPlace: freezed == oldPlace
+          ? _value.oldPlace
+          : oldPlace // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 
@@ -89,7 +95,7 @@ abstract class _$$_PositionCopyWith<$Res> implements $PositionCopyWith<$Res> {
       __$$_PositionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int year, Song song, int place});
+  $Res call({int year, Song song, int place, int? oldPlace});
 
   @override
   $SongCopyWith<$Res> get song;
@@ -109,6 +115,7 @@ class __$$_PositionCopyWithImpl<$Res>
     Object? year = null,
     Object? song = null,
     Object? place = null,
+    Object? oldPlace = freezed,
   }) {
     return _then(_$_Position(
       year: null == year
@@ -123,6 +130,10 @@ class __$$_PositionCopyWithImpl<$Res>
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
               as int,
+      oldPlace: freezed == oldPlace
+          ? _value.oldPlace
+          : oldPlace // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -131,7 +142,10 @@ class __$$_PositionCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Position with DiagnosticableTreeMixin implements _Position {
   const _$_Position(
-      {required this.year, required this.song, required this.place});
+      {required this.year,
+      required this.song,
+      required this.place,
+      this.oldPlace});
 
   factory _$_Position.fromJson(Map<String, dynamic> json) =>
       _$$_PositionFromJson(json);
@@ -142,10 +156,12 @@ class _$_Position with DiagnosticableTreeMixin implements _Position {
   final Song song;
   @override
   final int place;
+  @override
+  final int? oldPlace;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Position(year: $year, song: $song, place: $place)';
+    return 'Position(year: $year, song: $song, place: $place, oldPlace: $oldPlace)';
   }
 
   @override
@@ -155,7 +171,8 @@ class _$_Position with DiagnosticableTreeMixin implements _Position {
       ..add(DiagnosticsProperty('type', 'Position'))
       ..add(DiagnosticsProperty('year', year))
       ..add(DiagnosticsProperty('song', song))
-      ..add(DiagnosticsProperty('place', place));
+      ..add(DiagnosticsProperty('place', place))
+      ..add(DiagnosticsProperty('oldPlace', oldPlace));
   }
 
   @override
@@ -165,12 +182,14 @@ class _$_Position with DiagnosticableTreeMixin implements _Position {
             other is _$_Position &&
             (identical(other.year, year) || other.year == year) &&
             (identical(other.song, song) || other.song == song) &&
-            (identical(other.place, place) || other.place == place));
+            (identical(other.place, place) || other.place == place) &&
+            (identical(other.oldPlace, oldPlace) ||
+                other.oldPlace == oldPlace));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, year, song, place);
+  int get hashCode => Object.hash(runtimeType, year, song, place, oldPlace);
 
   @JsonKey(ignore: true)
   @override
@@ -190,7 +209,8 @@ abstract class _Position implements Position {
   const factory _Position(
       {required final int year,
       required final Song song,
-      required final int place}) = _$_Position;
+      required final int place,
+      final int? oldPlace}) = _$_Position;
 
   factory _Position.fromJson(Map<String, dynamic> json) = _$_Position.fromJson;
 
@@ -200,6 +220,8 @@ abstract class _Position implements Position {
   Song get song;
   @override
   int get place;
+  @override
+  int? get oldPlace;
   @override
   @JsonKey(ignore: true)
   _$$_PositionCopyWith<_$_Position> get copyWith =>
