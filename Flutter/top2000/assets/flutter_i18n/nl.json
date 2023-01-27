@@ -12,6 +12,9 @@
         "settings": "Instellingen",
         "playlist": "Afspeellijst"
     },
+    "drawer": {
+        "year": "Jaartal"
+    },
     "artist": {
         "description": "Over artiest",
         "songs": "Liedjes van artiest",

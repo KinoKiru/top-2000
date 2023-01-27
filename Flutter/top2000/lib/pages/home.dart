@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:top2000/components/async_builder.dart';
+import 'package:top2000/components/filter_drawer.dart';
 import 'package:top2000/components/list_song.dart';
 import 'package:top2000/components/pagination_list.dart';
 import 'package:top2000/components/translation_wrapper.dart';
@@ -24,41 +25,7 @@ class _HomeState extends State<Home> {
     return SimpleAsyncBuilder<List<Song>>(
       future: getSongs(length: 5),
       onLoad: (List<Song> data, BuildContext context) => Scaffold(
-        endDrawer: Drawer(
-          child: ListView(
-            // Important: Remove any padding from the ListView.
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              SafeArea(
-                  child: Column(
-                children: <Widget>[
-                  InkWell(
-                    onTap: () => Navigator.pop(context),
-                    child: const Icon(CupertinoIcons.clear_thick),
-                  ),
-                  ListTile(
-                    leading: const Icon(
-                      Icons.home,
-                    ),
-                    title: const Text('Page 1'),
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                  ListTile(
-                    leading: const Icon(
-                      Icons.train,
-                    ),
-                    title: const Text('Page 2'),
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                ],
-              ))
-            ],
-          ),
-        ),
+        endDrawer: const FilterDrawer(),
         appBar: AppBar(
             actions: <Widget>[Container()],
             toolbarHeight: sizeX < sizeY ? 120 : 60,

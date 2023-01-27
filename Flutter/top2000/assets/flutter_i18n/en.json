@@ -16,5 +16,8 @@
     "description": "About artist",
     "moreInfo": "More information",
     "songs": "Artist songs"
+  },
+  "drawer": {
+    "year": "year"
   }
 }
