@@ -11,15 +11,6 @@ namespace Web.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Position");
-
-            migrationBuilder.DropTable(
-                name: "Song");
-
-            migrationBuilder.DropTable(
-                name: "Artist");
-
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new

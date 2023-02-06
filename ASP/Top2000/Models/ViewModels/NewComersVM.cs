@@ -2,12 +2,12 @@
 {
     public class NewComersVM
     {
-        public int Place;
+        public int Place { get; set; }
 
-        public string Name = String.Empty;
+        public string Name { get; set; } = String.Empty;
 
-        public string Title = String.Empty;
+        public string Title { get; set; } = String.Empty;
 
-        public int ReleaseYear;
+        public int ReleaseYear { get; set; }
     }
 }
