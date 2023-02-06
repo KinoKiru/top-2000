@@ -1,0 +1,108 @@
+import 'package:faker/faker.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:top2000/models/position.dart';
+import 'package:top2000/pages/artist.dart';
+
+class PositionList extends StatefulWidget {
+  const PositionList({super.key, required this.position});
+  final Position position;
+
+  @override
+  State<PositionList> createState() => _PositionListState();
+}
+
+class _PositionListState extends State<PositionList> {
+  @override
+  Widget build(BuildContext context) {
+    final double sizeX = MediaQuery.of(context).size.width;
+    final double sizeY = MediaQuery.of(context).size.height;
+
+    return Container(
+      padding: const EdgeInsets.all(8.0),
+      decoration: const BoxDecoration(
+        border: Border(bottom: BorderSide(color: Colors.black)),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          SizedBox(
+            width: 70,
+            child: Row(
+              children: [
+                if (widget.position.oldPlace! > widget.position.place) ...[
+                  const Icon(
+                    CupertinoIcons.up_arrow,
+                    color: Colors.green,
+                  )
+                ] else if (widget.position.oldPlace! <
+                    widget.position.place) ...[
+                  const Icon(
+                    CupertinoIcons.down_arrow,
+                    color: Colors.red,
+                  )
+                ] else ...[
+                  Icon(
+                    CupertinoIcons.equal,
+                    color: Colors.grey.shade600,
+                  )
+                ],
+                const SizedBox(
+                  width: 5,
+                ),
+                Column(
+                  children: [
+                    Text('${widget.position.place}'),
+                    Text(
+                      '${widget.position.oldPlace}',
+                      style: const TextStyle(
+                          fontSize: 10, fontStyle: FontStyle.italic),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(
+            width: 20,
+          ),
+          Image.network(
+            faker.image.image(
+                width: (sizeX / 6).floor(),
+                height: (sizeY < sizeX ? sizeY / 6 : sizeY / 12).floor(),
+                random: true),
+          ),
+          const SizedBox(
+            width: 20,
+          ),
+          Flexible(
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    widget.position.song.title,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  InkWell(
+                    onTap: () => PersistentNavBarNavigator.pushNewScreen(
+                        context,
+                        screen:
+                            ArtistInfo(artist: widget.position.song.artist)),
+                    child: Text(
+                      widget.position.song.artist.name,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

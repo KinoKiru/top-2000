@@ -11,5 +11,16 @@
         "home": "Start",
         "settings": "Instellingen",
         "playlist": "Afspeellijst"
+    },
+    "drawer": {
+        "year": "Jaar van lijst",
+        "reversed": "Omgekeerde volgorde",
+        "decrease": "Gedaalde weergeven",
+        "increase": "Gestegen weergeven"
+    },
+    "artist": {
+        "description": "Over artiest",
+        "songs": "Liedjes van artiest",
+        "moreInfo": "Meer informatie"
     }
 }

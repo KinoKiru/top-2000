@@ -1,0 +1,26 @@
+{
+  "artist": {
+    "description": "Über Künstler",
+    "moreInfo": "Mehr Informationen",
+    "songs": "Künstlerlieder"
+  },
+  "drawer": {
+    "decrease": "Anzeige heruntergefallen",
+    "increase": "Aufgestiegen anzeigen",
+    "reversed": "Umgekehrte Reihenfolge",
+    "year": "Jahr der Liste"
+  },
+  "home": {
+    "banner": "Hallo!",
+    "search": "Suchen"
+  },
+  "navigation": {
+    "home": "Start",
+    "playlist": "Wiedergabeliste",
+    "settings": "Einstellungen"
+  },
+  "settings": {
+    "color": "Farbmodus",
+    "locales": "Spracheinstellungen"
+  }
+}

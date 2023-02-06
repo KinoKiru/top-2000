@@ -1,15 +1,26 @@
 {
+  "artist": {
+    "description": "About artist",
+    "moreInfo": "More information",
+    "songs": "Artist songs"
+  },
+  "drawer": {
+    "decrease": "Show dropped",
+    "increase": "Show ascended",
+    "reversed": "Reverse order",
+    "year": "Year of list"
+  },
   "home": {
     "banner": "Hello!",
     "search": "Search"
-  },
-  "settings": {
-    "locales": "Language settings",
-    "color": "Color mode"
   },
   "navigation": {
     "home": "Start",
     "playlist": "Playlist",
     "settings": "Settings"
+  },
+  "settings": {
+    "color": "Color mode",
+    "locales": "Language settings"
   }
 }

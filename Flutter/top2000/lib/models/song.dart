@@ -6,8 +6,6 @@ import 'package:top2000/models/converters/byte_array.dart';
 part 'song.freezed.dart';
 part 'song.g.dart';
 
-//TODO Artist as object
-
 @freezed
 class Song with _$Song {
   const factory Song({

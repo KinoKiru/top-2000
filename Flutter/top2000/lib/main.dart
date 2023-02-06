@@ -6,14 +6,22 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:top2000/components/async_builder.dart';
 import 'package:top2000/components/navigation.dart';
 import 'package:top2000/globals.dart';
-import 'package:top2000/utils/utils.dart';
 
 void main() async {
-  runApp(const App());
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool? isDark = prefs.getBool('isDark');
+  if (isDark != null) {
+    isDarkMode = isDark;
+  }
+  runApp(App(
+    locale: prefs.getString('locale') ?? 'nl',
+  ));
 }
 
 class App extends StatefulWidget {
-  const App({super.key});
+  const App({super.key, required this.locale});
+  final String locale;
   @override
   State<App> createState() => _AppState();
 }
@@ -21,11 +29,7 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   Future<bool>? loadColorMode() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool? isDark = prefs.getBool('isDark');
-    if (isDark != null) {
-      isDarkMode = isDark;
-    }
-    await Jiffy.locale('nl');
+    await Jiffy.locale(widget.locale);
     return true;
   }
 
@@ -41,7 +45,7 @@ class _AppState extends State<App> {
         localizationsDelegates: <LocalizationsDelegate<dynamic>>[
           FlutterI18nDelegate(
             translationLoader: FileTranslationLoader(
-              forcedLocale: const Locale('nl'),
+              forcedLocale: Locale(widget.locale),
               fallbackFile: 'en',
               useCountryCode: false,
             ),
