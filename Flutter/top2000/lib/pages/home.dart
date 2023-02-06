@@ -1,15 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:top2000/components/async_builder.dart';
 import 'package:top2000/components/filter_drawer.dart';
-import 'package:top2000/components/artist_list_item.dart';
 import 'package:top2000/components/pagination_list.dart';
 import 'package:top2000/components/position_list_item.dart';
 import 'package:top2000/components/translation_wrapper.dart';
 import 'package:top2000/generators/position.dart';
-import 'package:top2000/generators/songs.dart';
 import 'package:top2000/models/position.dart';
-import 'package:top2000/models/song.dart';
+import 'package:top2000/utils/data_provicer.dart';
 import 'package:top2000/utils/utils.dart';
 
 class Home extends StatefulWidget {
@@ -20,13 +18,15 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  RemoteService owo = RemoteService();
   @override
   Widget build(BuildContext context) {
     final double sizeX = MediaQuery.of(context).size.width;
     final double sizeY = MediaQuery.of(context).size.height;
 
     return SimpleAsyncBuilder<List<Position>>(
-      future: getPosition(length: 5),
+      future: owo.getSongs(
+          'year=${Jiffy().year}&reversed=false&onlyIncreased=false&onlyDecreased=false'),
       onLoad: (List<Position> data, BuildContext context) => Scaffold(
         endDrawer: const FilterDrawer(),
         appBar: AppBar(
@@ -42,7 +42,7 @@ class _HomeState extends State<Home> {
               itemBuilder: (BuildContext context, Position item, int index) =>
                   PositionList(position: item),
               onEnd: () async {
-                return await getPosition();
+                // return await getPosition();
               },
             ),
           ),
