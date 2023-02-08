@@ -2,7 +2,8 @@
   "artist": {
     "description": "Sobre el artista",
     "moreInfo": "Más información",
-    "songs": "Canciones de artistas"
+    "songs": "Canciones de artistas",
+    "noData": "No hay información disponible sobre el artista"
   },
   "drawer": {
     "decrease": "Pantalla caída",
@@ -12,7 +13,8 @@
   },
   "home": {
     "banner": "¡Hola!",
-    "search": "Buscar"
+    "search": "Buscar",
+    "oldIsNull": "No"
   },
   "navigation": {
     "home": "Comienzo",

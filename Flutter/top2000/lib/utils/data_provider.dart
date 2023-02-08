@@ -1,31 +1,52 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:top2000/models/position.dart';
-import 'package:top2000/models/song.dart';
+import 'package:top2000/models/artist_page.dart';
+import 'package:top2000/models/home_page.dart';
 
 class RemoteService {
-  Future<List<Position>>? getSongs(String options) async {
+  Future<List<HomeData>>? getSongs(String options) async {
     Client client = Client();
     Uri uri = Uri.parse(
-        'https://10.0.2.2:5258/api/songs?year=2019&reversed=false&onlyIncreased=false&onlyDecreased=false');
+        'http://10.0.2.2:5273/api/songs?year=2019&reversed=false&onlyIncreased=false&onlyDecreased=false');
     Response response = await client.get(uri);
     //if response if around 200 load it, else throw error
     if (response.statusCode < 300 && response.statusCode >= 200) {
-      List<Position> songs;
+      List<HomeData> songs;
       //fill list with car's
-      songs = (jsonDecode(response.body) as List)
-          .map((e) => Position.fromJson(e))
+      songs = (jsonDecode(response.body) as List<dynamic>)
+          .map((e) => HomeData.fromJson(e))
           .toList();
+      print(songs);
+
       return songs;
     } else {
       if (response.statusCode == 400) {
         return List.empty();
       }
-      throw Exception("Probleem met ophalen van data, is de API wel online?");
+      throw Exception('Probleem met ophalen van data, is de API wel online?');
     }
   }
 
+  Future<List<ArtistData>>? getArtist(String options) async {
+    Client client = Client();
+    Uri uri = Uri.parse('http://10.0.2.2:5273/api/artist?ArtistId=$options');
+    Response response = await client.get(uri);
+    //if response if around 200 load it, else throw error
+    if (response.statusCode < 300 && response.statusCode >= 200) {
+      List<ArtistData> artists;
+      //fill list with car's
+      artists = (jsonDecode(response.body) as List<dynamic>)
+          .map((e) => ArtistData.fromJson(e))
+          .toList();
+      return artists;
+    } else {
+      if (response.statusCode == 400) {
+        return List.empty();
+      }
+      throw Exception('Probleem met ophalen van data, is de API wel online?');
+    }
+  }
   // Future<Photos?> getImage(String options) async {
   //   Client client = Client();
   //   Uri uri = Uri.parse(

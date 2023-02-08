@@ -1,7 +1,8 @@
 {
     "home": {
         "banner": "Hallo!",
-        "search": "Zoeken"
+        "search": "Zoeken",
+        "oldIsNull": "geen"
     },
     "settings": {
         "locales": "Taal instellingen",
@@ -21,6 +22,7 @@
     "artist": {
         "description": "Over artiest",
         "songs": "Liedjes van artiest",
-        "moreInfo": "Meer informatie"
+        "moreInfo": "Meer informatie",
+        "noData": "Geen informatie beschikbaar over artiest"
     }
 }
