@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jiffy/jiffy.dart';
 import 'package:top2000/components/async_builder.dart';
 import 'package:top2000/components/filter_drawer.dart';
 import 'package:top2000/components/position_list_item.dart';
@@ -9,7 +8,11 @@ import 'package:top2000/utils/data_provider.dart';
 import 'package:top2000/utils/utils.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  const Home(
+      {super.key,
+      this.searchOptions =
+          'year=2022&reversed=false&onlyIncreased=false&onlyDecreased=false'});
+  final String searchOptions;
 
   @override
   State<Home> createState() => _HomeState();
@@ -23,8 +26,7 @@ class _HomeState extends State<Home> {
     final double sizeY = MediaQuery.of(context).size.height;
 
     return SimpleAsyncBuilder<List<HomeData>>(
-      future: owo.getSongs(
-          'year=${Jiffy().year - 1}&reversed=false&onlyIncreased=false&onlyDecreased=false'),
+      future: owo.getSongs(widget.searchOptions),
       onLoad: (List<HomeData> data, BuildContext context) => Scaffold(
         endDrawer: const FilterDrawer(),
         appBar: AppBar(

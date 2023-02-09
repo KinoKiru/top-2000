@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:top2000/components/date_timepicker.dart';
 import 'package:top2000/globals.dart';
+import 'package:top2000/pages/home.dart';
 
 /// SimpleAsyncBuilder
 /// Used when data needs to be awaited but not checked.
@@ -99,6 +100,13 @@ class _FilterDrawerState extends State<FilterDrawer> {
                         width: sizeX * 0.65,
                         child: TextButton(
                           onPressed: () {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) => Home(
+                                      searchOptions:
+                                          'year=${controller.text.toString()}&reversed=$reversed&onlyIncreased=$includeIncrease&onlyDecreased=$includeDecrease'),
+                                ));
                             //TODO get request with parameters
                           },
                           style: ElevatedButton.styleFrom(
