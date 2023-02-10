@@ -18,16 +18,20 @@ namespace Api.Controllers
 
         [HttpGet("/api/songs")]
         public IResult Songs(int year, bool? reversed = false, bool? onlyIncreased = false, bool? onlyDecreased = false) {
-            dynamic result;
+            dynamic result = null;
             if (onlyDecreased == true)
             {
-                //  result = _context.DecreaseOfPosition.FromSqlInterpolated($"spDecreaseOfPosition {year}");
-                result = _context.SongPositionArtist.FromSqlInterpolated($"spSongPositionArtist {year}").ToList();
+               
+                result = _context.SongPositionArtist.FromSqlInterpolated($"spSongPositionArtist {year}").ToList().Where(x => x.OldPosition < x.Place).ToList();            
             }
-            else if (onlyIncreased == true)
+
+            if (onlyIncreased == true)
             {
                 // result = _context.FromSqlInterpolated($"spDecreaseOfPosition {year}");
-                result = _context.SongPositionArtist.FromSqlInterpolated($"spSongPositionArtist {year}").ToList();
+                if (result != null) {
+                    result.Add(_context.SongPositionArtist.FromSqlInterpolated($"spSongPositionArtist {year}").ToList().Where(x => x.OldPosition > x.Place));
+                }
+                result = _context.SongPositionArtist.FromSqlInterpolated($"spSongPositionArtist {year}").ToList().Where(x => x.OldPosition > x.Place).ToList();
             }
             else {
                 result = _context.SongPositionArtist.FromSqlInterpolated($"spSongPositionArtist {year}").ToList();

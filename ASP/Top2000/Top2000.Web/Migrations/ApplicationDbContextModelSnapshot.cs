@@ -473,6 +473,39 @@ namespace Web.Migrations
                     b.ToView("spSamePosition", (string)null);
                 });
 
+            modelBuilder.Entity("Models.ViewModels.SongPositionArtistVM", b =>
+                {
+                    b.Property<int>("ArtistId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("OldPosition")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Place")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReleaseYear")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SongId")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("SongPhoto")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable((string)null);
+
+                    b.ToView("spSongPositionArtist", (string)null);
+                });
+
             modelBuilder.Entity("Models.ViewModels.SongsOfArtistVM", b =>
                 {
                     b.Property<int?>("ReleaseYear")
