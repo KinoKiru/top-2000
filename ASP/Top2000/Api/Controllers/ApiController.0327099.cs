@@ -29,7 +29,7 @@ namespace Api.Controllers
             {
                 // result = _context.FromSqlInterpolated($"spDecreaseOfPosition {year}");
                 if (result != null) {
-                    result.Add(_context.SongPositionArtist.FromSqlInterpolated($"spSongPositionArtist {year}").ToList().Where(x => x.OldPosition > x.Place));
+                    result.AddRange(_context.SongPositionArtist.FromSqlInterpolated($"spSongPositionArtist {year}").ToList().Where(x => x.OldPosition > x.Place).ToList());
                 }
                 result = _context.SongPositionArtist.FromSqlInterpolated($"spSongPositionArtist {year}").ToList().Where(x => x.OldPosition > x.Place).ToList();
             }
