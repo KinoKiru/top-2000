@@ -32,7 +32,9 @@ class _FilterDrawerState extends State<FilterDrawer> {
           SingleChildScrollView(
             child: Column(
               children: [
+                Image.asset('assets/images/Top-2000-logo-en-cafe.jpg'),
                 SafeArea(
+                  top: true,
                   child: Column(
                     children: <Widget>[
                       InkWell(
@@ -96,18 +98,18 @@ class _FilterDrawerState extends State<FilterDrawer> {
                           });
                         },
                       ),
+                      Text(reversed.toString()),
                       SizedBox(
                         width: sizeX * 0.65,
                         child: TextButton(
                           onPressed: () {
                             Navigator.pushReplacement(
                                 context,
-                                MaterialPageRoute(
+                                MaterialPageRoute<Home>(
                                   builder: (BuildContext context) => Home(
                                       searchOptions:
                                           'year=${controller.text.toString()}&reversed=$reversed&onlyIncreased=$includeIncrease&onlyDecreased=$includeDecrease'),
                                 ));
-                            //TODO get request with parameters
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.blueAccent.shade700,

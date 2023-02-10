@@ -19,14 +19,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  RemoteService owo = RemoteService();
+  RemoteService service = RemoteService();
   @override
   Widget build(BuildContext context) {
     final double sizeX = MediaQuery.of(context).size.width;
     final double sizeY = MediaQuery.of(context).size.height;
 
     return SimpleAsyncBuilder<List<HomeData>>(
-      future: owo.getSongs(widget.searchOptions),
+      future: service.getSongs(widget.searchOptions),
       onLoad: (List<HomeData> data, BuildContext context) => Scaffold(
         endDrawer: const FilterDrawer(),
         appBar: AppBar(
