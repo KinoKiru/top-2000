@@ -40,7 +40,7 @@ namespace Api.Controllers
                     if (a.Place < b.Place) { 
                         return 1;
                     }
-                    return 0;
+                    return -1;
                 });
                 result = owo;
             }

@@ -11,7 +11,7 @@ class Home extends StatefulWidget {
   const Home(
       {super.key,
       this.searchOptions =
-          'year=2022&reversed=false&onlyIncreased=false&onlyDecreased=false'});
+          'year=2020&reversed=false&onlyIncreased=false&onlyDecreased=false'});
   final String searchOptions;
 
   @override
