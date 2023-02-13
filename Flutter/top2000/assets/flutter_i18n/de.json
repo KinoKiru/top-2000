@@ -2,7 +2,8 @@
   "artist": {
     "description": "Über Künstler",
     "moreInfo": "Mehr Informationen",
-    "songs": "Künstlerlieder"
+    "songs": "Künstlerlieder",
+    "noData": "Keine Informationen zum Künstler verfügbar"
   },
   "drawer": {
     "decrease": "Anzeige heruntergefallen",
@@ -12,15 +13,20 @@
   },
   "home": {
     "banner": "Hallo!",
-    "search": "Suchen"
+    "search": "Suchen",
+    "oldIsNull": "NEIN"
   },
   "navigation": {
     "home": "Start",
     "playlist": "Wiedergabeliste",
-    "settings": "Einstellungen"
+    "settings": "Einstellungen",
+    "search": "Suchen"
   },
   "settings": {
     "color": "Farbmodus",
     "locales": "Spracheinstellungen"
+  },
+  "search": {
+    "noItems": "Es wurden keine Ergebnisse gefunden"
   }
 }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:top2000/globals.dart';
-import 'package:top2000/pages/playlist.dart';
+import 'package:top2000/pages/search.dart';
 import 'package:top2000/pages/settings.dart';
 import 'package:top2000/pages/home.dart';
 
@@ -14,7 +14,7 @@ class Navigation extends StatelessWidget {
       PersistentTabController(initialIndex: 0);
 
   List<Widget> _buildScreens() {
-    return <Widget>[const Home(), const Playlist(), const Settings()];
+    return <Widget>[const Home(), const Search(), const Settings()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems(BuildContext context) {
@@ -28,8 +28,8 @@ class Navigation extends StatelessWidget {
         inactiveColorPrimary: inactiveColor,
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(CupertinoIcons.music_note_list),
-        title: (FlutterI18n.translate(context, 'navigation.playlist')),
+        icon: const Icon(CupertinoIcons.search),
+        title: (FlutterI18n.translate(context, 'navigation.search')),
         activeColorPrimary: Colors.red,
         inactiveColorPrimary: inactiveColor,
       ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:top2000/components/date_timepicker.dart';
 import 'package:top2000/globals.dart';
+import 'package:top2000/pages/home.dart';
 
 /// SimpleAsyncBuilder
 /// Used when data needs to be awaited but not checked.
@@ -30,8 +31,10 @@ class _FilterDrawerState extends State<FilterDrawer> {
         children: <Widget>[
           SingleChildScrollView(
             child: Column(
-              children: [
+              children: <Widget>[
+                Image.asset('assets/images/Top-2000-logo-en-cafe.jpg'),
                 SafeArea(
+                  top: true,
                   child: Column(
                     children: <Widget>[
                       InkWell(
@@ -99,7 +102,13 @@ class _FilterDrawerState extends State<FilterDrawer> {
                         width: sizeX * 0.65,
                         child: TextButton(
                           onPressed: () {
-                            //TODO get request with parameters
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute<Home>(
+                                  builder: (BuildContext context) => Home(
+                                      searchOptions:
+                                          'year=${controller.text.toString()}&reversed=$reversed&onlyIncreased=$includeIncrease&onlyDecreased=$includeDecrease'),
+                                ));
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.blueAccent.shade700,

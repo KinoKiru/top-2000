@@ -2,7 +2,8 @@
   "artist": {
     "description": "About artist",
     "moreInfo": "More information",
-    "songs": "Artist songs"
+    "songs": "Artist songs",
+    "noData": "No information available on artist"
   },
   "drawer": {
     "decrease": "Show dropped",
@@ -12,15 +13,20 @@
   },
   "home": {
     "banner": "Hello!",
-    "search": "Search"
+    "search": "Search",
+    "oldIsNull": "no"
   },
   "navigation": {
     "home": "Start",
     "playlist": "Playlist",
-    "settings": "Settings"
+    "settings": "Settings",
+    "search": "To search"
   },
   "settings": {
     "color": "Color mode",
     "locales": "Language settings"
+  },
+  "search": {
+    "noItems": "No results were found"
   }
 }

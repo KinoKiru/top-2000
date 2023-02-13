@@ -2,8 +2,7 @@
 {
     public class ArtistWithSongsVM
     {
-        public string Name { get; set; }
-        public string Title { get; set; }
+        public string Title { get; set; } = String.Empty;
         public int ReleaseYear { get; set; }
     }
 }

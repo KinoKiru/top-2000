@@ -14,7 +14,7 @@ Future<List<Artist>> getArtist(
     list.add(
       withImage
           ? Artist(
-              id: faker.randomGenerator.integer(100),
+              artistId: faker.randomGenerator.integer(100),
               name: artistName != '' ? artistName : faker.person.name(),
               description: faker.lorem.sentences(4).join(),
               photo: (await NetworkAssetBundle(Uri.parse(img)).load(img))
@@ -22,7 +22,7 @@ Future<List<Artist>> getArtist(
                   .asUint8List(),
             )
           : Artist(
-              id: faker.randomGenerator.integer(100),
+              artistId: faker.randomGenerator.integer(100),
               name: artistName != '' ? artistName : faker.person.name(),
               description: faker.lorem.sentences(4).join(),
             ),

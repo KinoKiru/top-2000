@@ -2,9 +2,9 @@
 {
     public class SamePositionVM
     {
-        public int Place;
-        public string Title = string.Empty;
-        public string Name = string.Empty;
-        public int ReleaseYear;
+        public int Place { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public int ReleaseYear { get; set; }
     }
 }

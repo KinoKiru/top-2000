@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:top2000/pages/loading.dart';
+import 'package:top2000/pages/error.dart';
 
 /// SimpleAsyncBuilder
 /// Used when data needs to be awaited but not checked.
@@ -22,7 +23,7 @@ class _SimpleAsyncBuilderState<T> extends State<SimpleAsyncBuilder<T>> {
         if (snapshot.hasData) {
           return widget.onLoad(snapshot.requireData, context);
         } else if (snapshot.hasError) {
-          return Text('Error owo ${snapshot.error}');
+          return ErrorPage(error: '${snapshot.error}');
         } else {
           return const Loading();
         }

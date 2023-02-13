@@ -1,7 +1,10 @@
 {
     "home": {
         "banner": "Hallo!",
-        "search": "Zoeken"
+        "oldIsNull": "geen"
+    },
+    "search": {
+        "noItems": "Er zijn geen resultaten gevonden"
     },
     "settings": {
         "locales": "Taal instellingen",
@@ -10,7 +13,7 @@
     "navigation": {
         "home": "Start",
         "settings": "Instellingen",
-        "playlist": "Afspeellijst"
+        "search": "Zoeken"
     },
     "drawer": {
         "year": "Jaar van lijst",
@@ -21,6 +24,7 @@
     "artist": {
         "description": "Over artiest",
         "songs": "Liedjes van artiest",
-        "moreInfo": "Meer informatie"
+        "moreInfo": "Meer informatie",
+        "noData": "Geen informatie beschikbaar over artiest"
     }
 }

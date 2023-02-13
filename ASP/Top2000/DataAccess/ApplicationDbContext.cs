@@ -31,6 +31,8 @@ namespace DataAccess
             modelBuilder.Entity<SongsPresentInEveryEditionVM>().ToView("spSongsPresentInEveryEdition").HasNoKey();
             modelBuilder.Entity<SongsReenteredInSpecificEditionVM>().ToView("spSongsReenteredInSpecificEdition").HasNoKey();
             modelBuilder.Entity<SongsWithSingleEntriesVM>().ToView("spSongsWithSingleEntries").HasNoKey();
+            modelBuilder.Entity<ArtistWithSongsExtendedVM>().ToView("spArtistWithSongsExtended").HasNoKey();
+            modelBuilder.Entity<SongPositionArtistVM>().ToView("spSongPositionArtist").HasNoKey();
         }
     }
 }

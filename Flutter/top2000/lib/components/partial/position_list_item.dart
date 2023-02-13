@@ -1,13 +1,14 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-import 'package:top2000/models/position.dart';
+import 'package:top2000/models/home_page.dart';
 import 'package:top2000/pages/artist.dart';
 
 class PositionList extends StatefulWidget {
   const PositionList({super.key, required this.position});
-  final Position position;
+  final HomeData position;
 
   @override
   State<PositionList> createState() => _PositionListState();
@@ -32,13 +33,14 @@ class _PositionListState extends State<PositionList> {
             width: 70,
             child: Row(
               children: [
-                if (widget.position.oldPlace! > widget.position.place) ...[
+                if (widget.position.oldPosition != null &&
+                    widget.position.oldPosition! > widget.position.place) ...[
                   const Icon(
                     CupertinoIcons.up_arrow,
                     color: Colors.green,
                   )
-                ] else if (widget.position.oldPlace! <
-                    widget.position.place) ...[
+                ] else if (widget.position.oldPosition != null &&
+                    widget.position.oldPosition! < widget.position.place) ...[
                   const Icon(
                     CupertinoIcons.down_arrow,
                     color: Colors.red,
@@ -56,7 +58,9 @@ class _PositionListState extends State<PositionList> {
                   children: [
                     Text('${widget.position.place}'),
                     Text(
-                      '${widget.position.oldPlace}',
+                      widget.position.oldPosition != null
+                          ? widget.position.oldPosition.toString()
+                          : FlutterI18n.translate(context, 'home.oldIsNull'),
                       style: const TextStyle(
                           fontSize: 10, fontStyle: FontStyle.italic),
                     )
@@ -68,12 +72,16 @@ class _PositionListState extends State<PositionList> {
           const SizedBox(
             width: 20,
           ),
-          Image.network(
-            faker.image.image(
-                width: (sizeX / 6).floor(),
-                height: (sizeY < sizeX ? sizeY / 6 : sizeY / 12).floor(),
-                random: true),
-          ),
+          if (widget.position.songPhoto != null) ...[
+            Image.memory(widget.position.songPhoto!),
+          ] else ...[
+            Image.network(
+              faker.image.image(
+                  width: (sizeX / 6).floor(),
+                  height: (sizeY < sizeX ? sizeY / 6 : sizeY / 12).floor(),
+                  random: true),
+            ),
+          ],
           const SizedBox(
             width: 20,
           ),
@@ -84,16 +92,16 @@ class _PositionListState extends State<PositionList> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    widget.position.song.title,
+                    widget.position.title,
                     overflow: TextOverflow.ellipsis,
                   ),
                   InkWell(
                     onTap: () => PersistentNavBarNavigator.pushNewScreen(
-                        context,
-                        screen:
-                            ArtistInfo(artist: widget.position.song.artist)),
+                      context,
+                      screen: ArtistInfo(artistId: widget.position.artistId),
+                    ),
                     child: Text(
-                      widget.position.song.artist.name,
+                      widget.position.name,
                       overflow: TextOverflow.ellipsis,
                     ),
                   )

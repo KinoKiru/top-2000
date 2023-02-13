@@ -8,9 +8,9 @@ part 'artist.g.dart';
 @freezed
 class Artist with _$Artist {
   const factory Artist({
-    required int id,
+    required int artistId,
     required String name,
-    required String description,
+    required String? description,
     @ByteArray() Uint8List? photo,
   }) = _Artist;
 

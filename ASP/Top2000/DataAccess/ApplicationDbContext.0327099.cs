@@ -9,5 +9,7 @@ namespace DataAccess
         public DbSet<NewComersVM> NewComers { get; set; }
         public DbSet<SamePositionVM> SamePosition { get; set; }
         public DbSet<TopThreeArtistVM> TopThreeArtist { get; set; }
+        public DbSet<ArtistWithSongsExtendedVM> ArtistWithSongsExtended { get; set; }
+        public DbSet<SongPositionArtistVM> SongPositionArtist { get; set; }
     }
 }

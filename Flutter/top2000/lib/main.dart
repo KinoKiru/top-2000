@@ -3,8 +3,8 @@ import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:top2000/components/async_builder.dart';
 import 'package:top2000/components/navigation.dart';
+import 'package:top2000/components/translation_wrapper.dart';
 import 'package:top2000/globals.dart';
 
 void main() async {
@@ -27,12 +27,6 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  Future<bool>? loadColorMode() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await Jiffy.locale(widget.locale);
-    return true;
-  }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -62,14 +56,8 @@ class _AppState extends State<App> {
           useMaterial3: true,
           brightness: isDarkMode ? Brightness.dark : Brightness.light,
         ),
-        home: SimpleAsyncBuilder<bool>(
-          future: loadColorMode(),
-          onLoad: (bool data, BuildContext context) {
-            return StreamBuilder<bool>(
-                initialData: true,
-                stream: FlutterI18n.retrieveLoadedStream(context),
-                builder: (BuildContext context, _) => Navigation());
-          },
+        home: TranslationWrapper(
+          onLoad: (BuildContext context) => Navigation(),
         ),
       ),
     );
