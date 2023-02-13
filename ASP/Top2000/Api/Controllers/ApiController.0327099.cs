@@ -58,7 +58,7 @@ namespace Api.Controllers
             return Results.Ok(result);
         }
 
-        [HttpGet("/search")]
+        [HttpGet("/api/search")]
         public async Task<IResult> SongsFromArtis(string ArtistName)
         {
             var result = await _context.Artist.Where(x => x.Name.Contains(ArtistName)).ToListAsync();
