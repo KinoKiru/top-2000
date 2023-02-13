@@ -11,5 +11,7 @@ namespace Web.Controllers
             client.DefaultRequestHeaders.Accept.Add(
             new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
         }
+
+
     }
 }
