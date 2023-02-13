@@ -98,7 +98,6 @@ class _FilterDrawerState extends State<FilterDrawer> {
                           });
                         },
                       ),
-                      Text(reversed.toString()),
                       SizedBox(
                         width: sizeX * 0.65,
                         child: TextButton(

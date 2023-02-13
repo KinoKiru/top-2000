@@ -98,8 +98,9 @@ class _PositionListState extends State<PositionList> {
                   ),
                   InkWell(
                     onTap: () => PersistentNavBarNavigator.pushNewScreen(
-                        context,
-                        screen: ArtistInfo(artistId: widget.position.artistId)),
+                      context,
+                      screen: ArtistInfo(artistId: widget.position.artistId),
+                    ),
                     child: Text(
                       widget.position.name,
                       overflow: TextOverflow.ellipsis,
