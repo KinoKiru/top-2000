@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:top2000/models/artist.dart';
 import 'package:top2000/pages/artist.dart';
+import 'package:faker/faker.dart';
 
 class ArtistList extends StatefulWidget {
   const ArtistList({super.key, required this.artist});
@@ -31,6 +32,19 @@ class _ArtistListState extends State<ArtistList> {
         },
         child: Row(
           children: [
+            if (widget.artist.photo != null) ...[
+              Image.memory(widget.artist.photo!),
+            ] else ...[
+              Image.network(
+                faker.image.image(
+                    width: (sizeX / 6).floor(),
+                    height: (sizeY < sizeX ? sizeY / 6 : sizeY / 12).floor(),
+                    random: true),
+              ),
+            ],
+            const SizedBox(
+              width: 10,
+            ),
             Text(widget.artist.name),
           ],
         ),

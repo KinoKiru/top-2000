@@ -15,20 +15,19 @@ class Search extends StatefulWidget {
 class _SearchState extends State<Search> {
   final RemoteService _service = RemoteService();
   List<Artist> foundArtist = List<Artist>.empty(growable: true);
+  TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final double sizeX = MediaQuery.of(context).size.width;
-    final double sizeY = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Column(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(left: 12, right: 12, top: 12),
+            padding: const EdgeInsets.only(left: 12, right: 12, top: 16),
             child: SizedBox(
               height: 50,
               child: TextFormField(
-                onChanged: (value) async {
+                onChanged: (String value) async {
                   if (value.length > 3) {
                     foundArtist = await _service.searchArtist(value);
                     setState(() {});
@@ -38,6 +37,7 @@ class _SearchState extends State<Search> {
                   }
                 },
                 autofocus: false,
+                controller: controller,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(CupertinoIcons.search),
                   prefixIconColor: Colors.grey.shade200,
@@ -52,11 +52,15 @@ class _SearchState extends State<Search> {
               ),
             ),
           ),
+          if (foundArtist.isEmpty &&
+              (controller.text.isNotEmpty && controller.text.length > 3))
+            I18nText('search.noItems'),
           Expanded(
             child: ListView.builder(
               padding: EdgeInsets.zero,
-              itemBuilder: (BuildContext context, int index) =>
-                  ArtistList(artist: foundArtist[index]),
+              itemBuilder: (BuildContext context, int index) => ArtistList(
+                artist: foundArtist[index],
+              ),
               itemCount: foundArtist.length,
             ),
           )

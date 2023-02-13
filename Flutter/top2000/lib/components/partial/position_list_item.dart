@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:top2000/models/home_page.dart';
-import 'package:top2000/models/position.dart';
 import 'package:top2000/pages/artist.dart';
 
 class PositionList extends StatefulWidget {

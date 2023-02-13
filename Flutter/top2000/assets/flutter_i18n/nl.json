@@ -3,6 +3,9 @@
         "banner": "Hallo!",
         "oldIsNull": "geen"
     },
+    "search": {
+        "noItems": "Er zijn geen resultaten gevonden"
+    },
     "settings": {
         "locales": "Taal instellingen",
         "color": "Kleur modus"
