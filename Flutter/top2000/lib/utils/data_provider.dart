@@ -8,6 +8,7 @@ class RemoteService {
   Future<List<HomeData>>? getSongs(String options) async {
     Client client = Client();
     Uri uri = Uri.parse('http://10.0.2.2:5273/api/songs?$options');
+    print(options);
     Response response = await client.get(uri);
     //if response if around 200 load it, else throw error
     if (response.statusCode < 300 && response.statusCode >= 200) {
@@ -16,8 +17,6 @@ class RemoteService {
       songs = (jsonDecode(response.body) as List<dynamic>)
           .map((e) => HomeData.fromJson(e))
           .toList();
-      print(songs);
-
       return songs;
     } else {
       if (response.statusCode == 400) {

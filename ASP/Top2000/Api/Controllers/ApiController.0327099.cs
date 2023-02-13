@@ -49,6 +49,12 @@ namespace Api.Controllers
                 result = owo;
             }
 
+            if (onlyDecreased == true && onlyIncreased == true)
+            {
+                List<SongPositionArtistVM> owo = result;
+                result = owo.OrderBy(item => item.Place);
+            }
+
             return Results.Ok(result);
         }
 

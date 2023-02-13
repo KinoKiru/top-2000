@@ -31,7 +31,7 @@ class _FilterDrawerState extends State<FilterDrawer> {
         children: <Widget>[
           SingleChildScrollView(
             child: Column(
-              children: [
+              children: <Widget>[
                 Image.asset('assets/images/Top-2000-logo-en-cafe.jpg'),
                 SafeArea(
                   top: true,
