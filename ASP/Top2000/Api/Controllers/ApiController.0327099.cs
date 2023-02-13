@@ -58,10 +58,10 @@ namespace Api.Controllers
             return Results.Ok(result);
         }
 
-        [HttpGet("/test")]
-        public IResult SongsFromArtis(string ArtistName)
+        [HttpGet("/search")]
+        public async Task<IResult> SongsFromArtis(string ArtistName)
         {
-            var result = _context.SongsOfArtist.FromSqlInterpolated($"spSongsOfArtist {ArtistName}");
+            var result = await _context.Artist.Where(x => x.Name.Contains(ArtistName)).ToListAsync();
             return Results.Ok(result);
         }
 
