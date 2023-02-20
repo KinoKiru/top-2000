@@ -12,11 +12,12 @@ namespace Models.ViewModels
         public int ArtistId { get; set; }
         public string Name { get; set; } = String.Empty;
         public string? Description { get; set; }  = String.Empty;
-        public Byte[]? ArtistPhoto { get; set; }
+        public string? ArtistPhoto { get; set; } = String.Empty; 
 
         // Song
+        public int SongId { get; set; }
         public string Title { get; set; } = String.Empty;
         public int ReleaseYear { get; set; }
-        public Byte[]? SongPhoto { get; set; }
+        public string? SongPhoto { get; set; } = string.Empty;
     }
 }

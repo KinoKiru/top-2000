@@ -14,7 +14,7 @@ namespace Web.Migrations
             StringBuilder sb = new StringBuilder();
             sb.Append(@"CREATE PROCEDURE spArtistWithSongsExtended @ARTISTID INT
 AS
-SELECT a.ArtistId, a.Name, a.Description, a.Photo[ArtistPhoto], s.Title, s.ReleaseYear, s.Photo[SongPhoto] from Artist as a
+SELECT a.ArtistId, a.Name, a.Description, a.Photo[ArtistPhoto], s.SongId, s.Title, s.ReleaseYear, s.Photo[SongPhoto] from Artist as a
 JOIN Song as s
 ON s.ArtistId = a.ArtistId
 WHERE a.ArtistId = @ARTISTID");

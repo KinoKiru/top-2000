@@ -5,8 +5,7 @@
     ViewData["Title"] = "Log in";
 }
 
-<h1>@ViewData["Title"]</h1>
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-4">
         <section>
             <form id="account" method="post">
@@ -32,7 +31,7 @@
                 <div>
                     <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
                 </div>
-                <div>
+                <div class="d-md-flex flex-row justify-content-between mt-2">
                     <p>
                         <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
                     </p>
@@ -65,9 +64,18 @@
                     <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
                         <div>
                             <p>
+                            
                                 @foreach (var provider in Model.ExternalLogins!)
                                 {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                    <button type="submit" class="btn btn-secondary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                                        @if (provider.DisplayName == "Google")
+                                        {
+                                            <img style="width: 4.5em; height: 4.5em;" src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png" />
+                                        } else
+                                        {
+                                        @provider.DisplayName    
+                                        }
+                                    </button>
                                 }
                             </p>
                         </div>

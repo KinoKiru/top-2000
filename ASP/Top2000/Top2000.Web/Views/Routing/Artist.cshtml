@@ -1,0 +1,62 @@
+﻿@model List<Models.ViewModels.ArtistWithSongsExtendedVM>
+@using Classes;
+
+@if (User.IsInRole("Admin"))
+{
+    <a asp-action="ArtistEdit" asp-controller="Routing" asp-route-id="@Model[0].ArtistId">Edit Artiets</a>
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="position-relative w-auto">
+            <img src="@(Model[0].ArtistPhoto != null ? $"data:image/jpg;base64,{Model[0].ArtistPhoto}" : "https://media.istockphoto.com/id/1357365823/vector/default-image-icon-vector-missing-picture-page-for-website-design-or-mobile-app-no-photo.jpg?s=612x612&w=0&k=20&c=PM_optEhHBTZkuJQLlCjLz-v3zzxp-1mpNQZsdjrbns=")"
+                 class="img-fluid " />
+            <h1 class="position-absolute bottom-0 p-2 text-white backdrop w-full">@Model[0].Name</h1>
+        </div>
+    </div>
+    <p class="text-center m-3">
+        @(Model[0].Description ?? "Geen beschrijving")
+    </p>
+    <a class="text-center" href="https://nl.wikipedia.org/wiki/@Classes.Extensions.capitalizeAll(Model[0].Name.Replace(" ", "_"))">
+        Wikipedia
+    </a>
+
+    <div class="row" style="max-height: 20em; overflow-y: scroll; overflow-x:hidden">
+        <ul>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <li class="d-flex justify-content-between align-items-center px-3 row-height @(i % 2 == 0 ? "green" : "lighter-green")">
+                    <img style="width: 3em; height: 3em;" src="@(Model[i].SongPhoto != null ? $"`data:image/jpg;base64,{Model[i].SongPhoto}" : "https://media.istockphoto.com/id/1357365823/vector/default-image-icon-vector-missing-picture-page-for-website-design-or-mobile-app-no-photo.jpg?s=612x612&w=0&k=20&c=PM_optEhHBTZkuJQLlCjLz-v3zzxp-1mpNQZsdjrbns=")">
+                    <a asp-action="SongDetails" asp-route-id="@Model[i].SongId">
+                        @Model[i].Title
+                    </a>
+                    <date>
+                        @Model[i].ReleaseYear
+                    </date>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+<style>
+    .green {
+        background-color: #66d0bc;
+    }
+
+    .lighter-green {
+        background-color: #Abf3e5;
+    }
+
+    .row-height {
+        height: 5em;
+    }
+
+    .backdrop {
+        background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 36%);
+    }
+</style>
+
+
+
+

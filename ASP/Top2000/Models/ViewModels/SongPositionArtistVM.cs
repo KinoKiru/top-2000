@@ -10,7 +10,7 @@ namespace Models.ViewModels
     {
         // Song
         public int SongId { get; set; } 
-        public Byte[]? SongPhoto { get; set; }
+        public string? SongPhoto { get; set; } = string.Empty;
         public int ReleaseYear { get; set; }
         public string Title { get; set; } = String.Empty;
 
