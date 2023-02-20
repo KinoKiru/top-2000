@@ -10,7 +10,7 @@ _$_Artist _$$_ArtistFromJson(Map<String, dynamic> json) => _$_Artist(
       artistId: json['artistId'] as int,
       name: json['name'] as String,
       description: json['description'] as String?,
-      photo: const ByteArray().fromJson(json['photo'] as List<int>?),
+      photo: const ByteArray().fromJson(json['photo'] as String?),
     );
 
 Map<String, dynamic> _$$_ArtistToJson(_$_Artist instance) => <String, dynamic>{

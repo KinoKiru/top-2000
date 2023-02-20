@@ -8,7 +8,7 @@ part of 'home_page.dart';
 
 _$_HomeData _$$_HomeDataFromJson(Map<String, dynamic> json) => _$_HomeData(
       songId: json['songId'] as int,
-      songPhoto: const ByteArray().fromJson(json['songPhoto'] as List<int>?),
+      songPhoto: const ByteArray().fromJson(json['songPhoto'] as String?),
       releaseYear: json['releaseYear'] as int,
       title: json['title'] as String,
       artistId: json['artistId'] as int,
