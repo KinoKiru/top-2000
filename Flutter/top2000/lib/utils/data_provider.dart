@@ -8,9 +8,10 @@ import 'package:top2000/models/home_page.dart';
 
 class RemoteService {
   static final Client _client = Client();
+  final String _apiUrl = 'http://10.0.2.2:5273/api';
 
   Future<List<HomeData>>? getSongs(String options) async {
-    Uri uri = Uri.parse('http://10.0.2.2:5273/api/songs?$options');
+    Uri uri = Uri.parse('$_apiUrl/songs?$options');
     print(options);
     Response response = await _client.get(uri);
     //if response if around 200 load it, else throw error
@@ -30,7 +31,7 @@ class RemoteService {
   }
 
   Future<List<ArtistData>>? getArtist(String options) async {
-    Uri uri = Uri.parse('http://10.0.2.2:5273/api/artist?ArtistId=$options');
+    Uri uri = Uri.parse('$_apiUrl/artist?ArtistId=$options');
     Response response = await _client.get(uri);
     //if response if around 200 load it, else throw error
     if (response.statusCode < 300 && response.statusCode >= 200) {
@@ -49,7 +50,7 @@ class RemoteService {
   }
 
   Future<List<Artist>> searchArtist(String name) async {
-    Uri uri = Uri.parse('http://10.0.2.2:5273/api/search?ArtistName=$name');
+    Uri uri = Uri.parse('$_apiUrl/search?ArtistName=$name');
     Response response = await _client.get(uri);
     if (response.statusCode < 300 && response.statusCode >= 200) {
       List<Artist> artists;
