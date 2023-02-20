@@ -33,7 +33,11 @@ class _ArtistListState extends State<ArtistList> {
         child: Row(
           children: [
             if (widget.artist.photo != null) ...[
-              Image.memory(widget.artist.photo!),
+              SizedBox(
+                  height:
+                      (sizeY < sizeX ? sizeY / 6 : sizeY / 12).floorToDouble(),
+                  width: (sizeX / 6).floorToDouble(),
+                  child: Image.memory(widget.artist.photo!)),
             ] else ...[
               Image.network(
                 faker.image.image(

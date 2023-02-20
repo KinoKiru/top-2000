@@ -73,7 +73,11 @@ class _PositionListState extends State<PositionList> {
             width: 20,
           ),
           if (widget.position.songPhoto != null) ...[
-            Image.memory(widget.position.songPhoto!),
+            SizedBox(
+                height:
+                    (sizeY < sizeX ? sizeY / 6 : sizeY / 12).floorToDouble(),
+                width: (sizeX / 6).floorToDouble(),
+                child: Image.memory(widget.position.songPhoto!)),
           ] else ...[
             Image.network(
               faker.image.image(
