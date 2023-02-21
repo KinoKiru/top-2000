@@ -11,29 +11,33 @@ namespace Web.Controllers
     {
         [AllowAnonymous]
         [HttpGet()]
-        public  IActionResult Artist(int id) {
+        public IActionResult Artist(int id)
+        {
             try
             {
                 //dynamic dynamicModel = new ExpandoObject();
                 //dynamicModel.Artist = _context.ArtistWithSongsExtended.FromSqlInterpolated($"spArtistWithSongsExtended {id}").ToList()[0];
                 //dynamicModel.Songs = _context.SongsOfArtist.FromSqlInterpolated($"spSongsOfArtist {dynamicModel.Artist.Name}").ToList();
 
-                List<ArtistWithSongsExtendedVM> result =  _context.ArtistWithSongsExtended.FromSqlInterpolated($"spArtistWithSongsExtended {id}").ToList().OrderByDescending(item => item.ReleaseYear).ToList();
+                List<ArtistWithSongsExtendedVM> result = _context.ArtistWithSongsExtended.FromSqlInterpolated($"spArtistWithSongsExtended {id}").ToList().OrderByDescending(item => item.ReleaseYear).ToList();
 
                 return View(result);
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 return View(ex);
             }
         }
 
         [Authorize(Roles = "Admin")]
-        public IActionResult Import() {
+        public IActionResult Import()
+        {
             return View();
         }
 
         [HttpGet]
-        public async Task<IActionResult> ArtistEdit(int? id) {
+        public async Task<IActionResult> ArtistEdit(int? id)
+        {
             if (id == null || _context.Artist == null)
             {
                 return NotFound();
@@ -48,16 +52,18 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ArtistEdit([Bind("ImageFile,Description,Name,ArtistId")]Artist artist)
+
+        public async Task<IActionResult> ArtistEdit([Bind("ImageFile,Description,Name,ArtistId")] Artist artist)
         {
             using (var ms = new MemoryStream())
             {
                 artist.ImageFile.CopyTo(ms);
                 artist.Photo = Convert.ToBase64String(ms.ToArray());
             }
+
             _context.Artist.Update(artist);
             _context.SaveChanges();
             return RedirectToAction("Artist", new { id = artist.ArtistId });
         }
-    }   
+    }
 }

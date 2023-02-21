@@ -8,13 +8,13 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="position-relative w-auto">
+        <div class="position-relative p-0" style="max-width: fit-content">
             <img src="@(Model[0].ArtistPhoto != null ? $"data:image/jpg;base64,{Model[0].ArtistPhoto}" : "https://media.istockphoto.com/id/1357365823/vector/default-image-icon-vector-missing-picture-page-for-website-design-or-mobile-app-no-photo.jpg?s=612x612&w=0&k=20&c=PM_optEhHBTZkuJQLlCjLz-v3zzxp-1mpNQZsdjrbns=")"
                  class="img-fluid " />
-            <h1 class="position-absolute bottom-0 p-2 text-white backdrop w-full">@Model[0].Name</h1>
+            <h1 class="position-absolute bottom-0 text-white backdrop mb-0 p-2" style="width: 100%;">@Model[0].Name</h1>
         </div>
     </div>
-    <p class="text-center m-3">
+    <p class="text-center m-3 text-truncate">
         @(Model[0].Description ?? "Geen beschrijving")
     </p>
     <a class="text-center" href="https://nl.wikipedia.org/wiki/@Classes.Extensions.capitalizeAll(Model[0].Name.Replace(" ", "_"))">
@@ -53,7 +53,7 @@
     }
 
     .backdrop {
-        background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 36%);
+        background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
     }
 </style>
 

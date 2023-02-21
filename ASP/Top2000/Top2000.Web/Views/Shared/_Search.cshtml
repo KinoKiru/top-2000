@@ -1,0 +1,62 @@
+﻿
+
+<div class="input-group position-relative">
+    <input type="search" id="searchbar" placeholder="Zoeken..." class="form-control" aria-label="Zoeken" aria-describedby="search-bar">
+    <div class="d-none position-absolute border-2 bg-light" id="menu"></div>
+</div>
+
+
+<style>
+    #menu {
+        max-height: 20em;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        top: 2.2em;
+        width: 100%;
+        border: grey 1px solid;
+        border-radius: 5px;
+        z-index: 50;
+    }
+
+    .green {
+        background-color: #66d0bc;
+    }
+
+    .lighter-green {
+        background-color: #Abf3e5;
+    }
+</style>
+
+<script>
+    let element = document.getElementById("searchbar");
+    element.addEventListener("input", search);
+
+    async function search(event) {
+        let searchValue = event.target.value;
+        $('#menu').empty();
+        $('#menu').addClass('d-none');
+        if (searchValue.length < 3) {
+            return;
+        }
+        $.get(`https://localhost:7258/api/search?ArtistName=${searchValue}`)
+            .done((data) => {
+                console.log(data);
+                $('#menu').removeClass('d-none');
+                if (data.length > 0) {
+                    for (let i = 0; i < data.length; i++) {
+                       
+                        $('#menu').append(`<a id="${i}" class="d-flex flex-grow-1 p-1 align-items-center ${i % 2 == 0 ? 'green' : 'lighter-green'}" href="/routing/artist/${data[i].artistId}"><a/>`);
+                        if(data[i].photo === null) {
+                            $(`#${i}`).append("<img style='width:40px; height: 40px;' src='https://media.istockphoto.com/id/1357365823/vector/default-image-icon-vector-missing-picture-page-for-website-design-or-mobile-app-no-photo.jpg?s=612x612&w=0&k=20&c=PM_optEhHBTZkuJQLlCjLz-v3zzxp-1mpNQZsdjrbns='/>")
+                        } else {
+                            $(`#${i}`).append(`<img style='width:40px; height: 40px;' src='data:image/jpg;base64,${data[i].photo}'/>`)
+                        }
+                        $(`#${i}`).append(`<div id='name-${i}' class='ps-3 mb-0'><p class='mb-0'>${data[i].name}</p></div>`);
+                        $(`#name-${i}`).append(`<small class='text-truncate d-inline-block'>${data[i].description ?? 'geen bescrijving'}</small>`);
+                    }
+                } else {
+                    $('#menu').append("<p class='p-3 mb-0 pb-0'> geen data gevonden <p/>");
+                }
+            })
+    }
+</script>
