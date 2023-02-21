@@ -67,7 +67,7 @@ class _SettingsState extends State<Settings> {
                       Align(
                           alignment: FractionalOffset.bottomCenter,
                           child:
-                              Text('Datum: ${Jiffy().format('DD MMMM yyyy')}'))
+                              Text('Datum: ${Jiffy().format('d MMMM yyyy')}'))
                     ],
                   ),
                 ),

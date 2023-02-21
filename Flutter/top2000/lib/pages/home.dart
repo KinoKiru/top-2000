@@ -22,9 +22,6 @@ class _HomeState extends State<Home> {
   RemoteService service = RemoteService();
   @override
   Widget build(BuildContext context) {
-    final double sizeX = MediaQuery.of(context).size.width;
-    final double sizeY = MediaQuery.of(context).size.height;
-
     return SimpleAsyncBuilder<List<HomeData>>(
       future: service.getSongs(widget.searchOptions),
       onLoad: (List<HomeData> data, BuildContext context) => Scaffold(
@@ -36,12 +33,13 @@ class _HomeState extends State<Home> {
         ),
         body: TranslationWrapper(
           onLoad: (BuildContext context) => Padding(
-              padding: const EdgeInsets.only(bottom: 8.0),
-              child: ListView.builder(
-                itemBuilder: (BuildContext context, int index) =>
-                    PositionList(position: data[index]),
-                itemCount: data.length,
-              )),
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: ListView.builder(
+              itemBuilder: (BuildContext context, int index) =>
+                  PositionList(position: data[index]),
+              itemCount: data.length,
+            ),
+          ),
         ),
       ),
     );

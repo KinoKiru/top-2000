@@ -32,20 +32,22 @@ class _PositionListState extends State<PositionList> {
           SizedBox(
             width: 70,
             child: Row(
-              children: [
+              children: <Widget>[
                 if (widget.position.oldPosition != null &&
-                    widget.position.oldPosition! > widget.position.place) ...[
+                    widget.position.oldPosition! >
+                        widget.position.place) ...<Widget>[
                   const Icon(
                     CupertinoIcons.up_arrow,
                     color: Colors.green,
                   )
                 ] else if (widget.position.oldPosition != null &&
-                    widget.position.oldPosition! < widget.position.place) ...[
+                    widget.position.oldPosition! <
+                        widget.position.place) ...<Widget>[
                   const Icon(
                     CupertinoIcons.down_arrow,
                     color: Colors.red,
                   )
-                ] else ...[
+                ] else ...<Widget>[
                   Icon(
                     CupertinoIcons.equal,
                     color: Colors.grey.shade600,
@@ -55,7 +57,7 @@ class _PositionListState extends State<PositionList> {
                   width: 5,
                 ),
                 Column(
-                  children: [
+                  children: <Widget>[
                     Text('${widget.position.place}'),
                     Text(
                       widget.position.oldPosition != null
@@ -72,13 +74,13 @@ class _PositionListState extends State<PositionList> {
           const SizedBox(
             width: 20,
           ),
-          if (widget.position.songPhoto != null) ...[
+          if (widget.position.songPhoto != null) ...<Widget>[
             SizedBox(
                 height:
                     (sizeY < sizeX ? sizeY / 6 : sizeY / 12).floorToDouble(),
                 width: (sizeX / 6).floorToDouble(),
                 child: Image.memory(widget.position.songPhoto!)),
-          ] else ...[
+          ] else ...<Widget>[
             Image.network(
               faker.image.image(
                   width: (sizeX / 6).floor(),

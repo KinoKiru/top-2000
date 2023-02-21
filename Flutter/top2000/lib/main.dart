@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:jiffy/jiffy.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:top2000/components/navigation.dart';
 import 'package:top2000/components/translation_wrapper.dart';
@@ -44,6 +43,7 @@ class _AppState extends State<App> {
               useCountryCode: false,
             ),
             missingTranslationHandler: (String? key, Locale? locale) {
+              // ignore: avoid_print
               print(
                   '--- Missing Key: $key, languageCode: ${locale?.languageCode}');
             },

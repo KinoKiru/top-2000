@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:math';
-
 import 'package:http/http.dart';
 import 'package:top2000/models/artist.dart';
 import 'package:top2000/models/artist_page.dart';
@@ -12,19 +10,18 @@ class RemoteService {
 
   Future<List<HomeData>>? getSongs(String options) async {
     Uri uri = Uri.parse('$_apiUrl/songs?$options');
-    print(options);
     Response response = await _client.get(uri);
     //if response if around 200 load it, else throw error
     if (response.statusCode < 300 && response.statusCode >= 200) {
       List<HomeData> songs;
       //fill list with car's
       songs = (jsonDecode(response.body) as List<dynamic>)
-          .map((e) => HomeData.fromJson(e))
+          .map((dynamic e) => HomeData.fromJson(e))
           .toList();
       return songs;
     } else {
       if (response.statusCode == 400) {
-        return List.empty();
+        return List<HomeData>.empty();
       }
       throw Exception('Probleem met ophalen van data, is de API wel online?');
     }
@@ -38,12 +35,12 @@ class RemoteService {
       List<ArtistData> artists;
       //fill list with car's
       artists = (jsonDecode(response.body) as List<dynamic>)
-          .map((e) => ArtistData.fromJson(e))
+          .map((dynamic e) => ArtistData.fromJson(e))
           .toList();
       return artists;
     } else {
       if (response.statusCode == 400) {
-        return List.empty();
+        return List<ArtistData>.empty();
       }
       throw Exception('Probleem met ophalen van data, is de API wel online?');
     }
@@ -55,12 +52,12 @@ class RemoteService {
     if (response.statusCode < 300 && response.statusCode >= 200) {
       List<Artist> artists;
       artists = (jsonDecode(response.body) as List<dynamic>)
-          .map((e) => Artist.fromJson(e))
+          .map((dynamic e) => Artist.fromJson(e))
           .toList();
       return artists;
     } else {
       if (response.statusCode == 400) {
-        return List.empty();
+        return List<Artist>.empty();
       }
       throw Exception(
           'Probleem met ophalen van de data, is de API wel online?');

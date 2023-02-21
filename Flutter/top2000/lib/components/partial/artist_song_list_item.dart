@@ -25,13 +25,13 @@ class _ArtistSongListState extends State<ArtistSongList> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          if (widget.song.songPhoto != null) ...[
+          if (widget.song.songPhoto != null) ...<Widget>[
             SizedBox(
                 height:
                     (sizeY < sizeX ? sizeY / 6 : sizeY / 12).floorToDouble(),
                 width: (sizeX / 6).floorToDouble(),
                 child: Image.memory(widget.song.songPhoto!)),
-          ] else ...[
+          ] else ...<Widget>[
             Image.network(
               faker.image.image(
                   width: (sizeX / 6).floor(),

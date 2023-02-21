@@ -31,14 +31,14 @@ class _ArtistListState extends State<ArtistList> {
           );
         },
         child: Row(
-          children: [
-            if (widget.artist.photo != null) ...[
+          children: <Widget>[
+            if (widget.artist.photo != null) ...<Widget>[
               SizedBox(
                   height:
                       (sizeY < sizeX ? sizeY / 6 : sizeY / 12).floorToDouble(),
                   width: (sizeX / 6).floorToDouble(),
                   child: Image.memory(widget.artist.photo!)),
-            ] else ...[
+            ] else ...<Widget>[
               Image.network(
                 faker.image.image(
                     width: (sizeX / 6).floor(),
