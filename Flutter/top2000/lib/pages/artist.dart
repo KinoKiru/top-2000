@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:faker/faker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +27,7 @@ class _ArtistInfoState extends State<ArtistInfo> {
     final double sizeX = MediaQuery.of(context).size.width;
     final double sizeY = MediaQuery.of(context).size.height;
 
-    return SimpleAsyncBuilder(
+    return SimpleAsyncBuilder<List<ArtistData>>(
       future: owo.getArtist(widget.artistId.toString()),
       onLoad: (List<ArtistData> data, BuildContext context) => Scaffold(
         body: TranslationWrapper(

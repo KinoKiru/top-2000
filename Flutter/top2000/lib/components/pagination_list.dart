@@ -55,7 +55,6 @@ class _PaginationListState<T> extends State<PaginationList<T>> {
   }
 
   Future<List<T>> pageFetch(int offset) async {
-    print(offset);
     page = (offset / 20).round();
 
     final dynamic newItemList = await widget.onEnd();

@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models
 {
@@ -9,7 +12,11 @@ namespace Models
 
         [StringLength(75)]
         public string Name { get; set; } = string.Empty;
-        public byte[]? Photo { get; set; }
+        public string? Photo { get; set; } = string.Empty;
         public string? Description { get; set; } = string.Empty;
+
+        [NotMapped]
+        [DisplayName("Upload File")]
+        public IFormFile ImageFile { get; set; }
     }
 }

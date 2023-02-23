@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models
@@ -14,7 +16,11 @@ namespace Models
         [ForeignKey("ArtistId")]
         public int ArtistId { get; set; }
         public Artist Artist { get; set; } = new ();
-        public byte[]? Photo { get; set; }
+        public string? Photo { get; set; } = string.Empty;
         public int ReleaseYear { get; set; }
+
+        [NotMapped]
+        [DisplayName("Upload File")]
+        public IFormFile ImageFile { get; set; }
     }
 }

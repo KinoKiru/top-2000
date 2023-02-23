@@ -236,8 +236,8 @@ namespace Web.Migrations
                         .HasMaxLength(75)
                         .HasColumnType("nvarchar(75)");
 
-                    b.Property<byte[]>("Photo")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("Photo")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ArtistId");
 
@@ -273,8 +273,8 @@ namespace Web.Migrations
                     b.Property<int>("ArtistId")
                         .HasColumnType("int");
 
-                    b.Property<byte[]>("Photo")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("Photo")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ReleaseYear")
                         .HasColumnType("int");
@@ -296,8 +296,8 @@ namespace Web.Migrations
                     b.Property<int>("ArtistId")
                         .HasColumnType("int");
 
-                    b.Property<byte[]>("ArtistPhoto")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("ArtistPhoto")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -309,8 +309,11 @@ namespace Web.Migrations
                     b.Property<int>("ReleaseYear")
                         .HasColumnType("int");
 
-                    b.Property<byte[]>("SongPhoto")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<int>("SongId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SongPhoto")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -494,8 +497,8 @@ namespace Web.Migrations
                     b.Property<int>("SongId")
                         .HasColumnType("int");
 
-                    b.Property<byte[]>("SongPhoto")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("SongPhoto")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()

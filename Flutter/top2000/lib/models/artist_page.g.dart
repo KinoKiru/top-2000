@@ -11,9 +11,8 @@ _$_ArtistData _$$_ArtistDataFromJson(Map<String, dynamic> json) =>
       artistId: json['artistId'] as int,
       name: json['name'] as String,
       description: json['description'] as String?,
-      artistPhoto:
-          const ByteArray().fromJson(json['artistPhoto'] as List<int>?),
-      songPhoto: const ByteArray().fromJson(json['songPhoto'] as List<int>?),
+      artistPhoto: const ByteArray().fromJson(json['artistPhoto'] as String?),
+      songPhoto: const ByteArray().fromJson(json['songPhoto'] as String?),
       releaseYear: json['releaseYear'] as int,
       title: json['title'] as String,
     );
