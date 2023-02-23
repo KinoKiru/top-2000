@@ -13,7 +13,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Top2000</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Song" asp-action="Song">Top2000</a>
                 <div class="d-lg-grid d-flex flex-grow-1 me-2">
                     <partial name="_Search" />
                 </div>
@@ -24,7 +24,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
                     <ul class="navbar-nav justify-content-end">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Song" asp-action="Index">Home</a>
                         </li>
                         @if (User.IsInRole("Admin"))
                         {
@@ -46,9 +46,6 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Routing" asp-action="Import">Importeren</a>
                             </li>
                         }
-                        <li>
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Routing" asp-action="Song">Songs</a>
-                        </li>
                     </ul>
                     <div class="d-md-none d-flex">
                         <partial name="_LoginPartial" />

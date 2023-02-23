@@ -6,8 +6,14 @@
 <h1>List of songs</h1>
 <div class="container-fluid">
 <form class="form-control" method="post">
-    <input min="2000" max="2021" type="number" name="year"/>
-    <button type="submit" class="btn-primary">Submit</button>
+        <select name="year" class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            @for (int i = 1999; i < 2022; i++)
+            {
+                <option value="@i">@i</option>
+            }
+        </select>
+    <button type="submit" class="btn mt-1 btn-primary">Submit</button>
 </form>
     <table class="table">
         <thead class="table-dark">

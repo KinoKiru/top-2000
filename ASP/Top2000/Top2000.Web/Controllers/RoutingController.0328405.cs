@@ -4,6 +4,7 @@ using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using System.Buffers.Text;
 using Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Web.Controllers
 {
@@ -33,22 +34,37 @@ namespace Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditSong(int id)
+        public async Task<IActionResult> EditSong(int? id)
         {
-            var result = _context.Song.Where(x => x.SongId.Equals(id));
-            return View(result);
+            if (id == null || _context.Song == null)
+            {
+                return NotFound();
+            }
+
+            var song = await _context.Song.FindAsync(id);
+            if (song == null)
+            {
+                return NotFound();
+            }
+            return View(song);
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditSong(Song song)
+        public async Task<IActionResult> EditSong([Bind("ImageFile,Title,SongId,ReleaseYear,ArtistId")] Song song)
         {
 
             try
             {
+                using (var ms = new MemoryStream())
+                {
+                    song.ImageFile.CopyTo(ms);
+                    song.Photo = Convert.ToBase64String(ms.ToArray());
+                }
+
                 _context.Song.Update(song);
                 _context.SaveChanges();
                 var result = await _context.Song.Where(x => x.SongId.Equals(song.SongId)).ToListAsync();
-                return View(result);
+                return RedirectToAction("SongDetails", new { id = song.SongId });
             }
             catch (Exception ex)
             {

@@ -15,7 +15,7 @@ namespace Models
 
         [ForeignKey("ArtistId")]
         public int ArtistId { get; set; }
-        public Artist Artist { get; set; } = new ();
+        public Artist? Artist { get; set; }
         public string? Photo { get; set; } = string.Empty;
         public int ReleaseYear { get; set; }
 

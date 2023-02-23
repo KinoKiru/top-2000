@@ -11,7 +11,7 @@ namespace Web.Controllers
     {
         [AllowAnonymous]
         [HttpGet()]
-        public IActionResult Artist(int id)
+        public async  Task<IActionResult> Artist(int id)
         {
             try
             {
@@ -19,7 +19,8 @@ namespace Web.Controllers
                 //dynamicModel.Artist = _context.ArtistWithSongsExtended.FromSqlInterpolated($"spArtistWithSongsExtended {id}").ToList()[0];
                 //dynamicModel.Songs = _context.SongsOfArtist.FromSqlInterpolated($"spSongsOfArtist {dynamicModel.Artist.Name}").ToList();
 
-                List<ArtistWithSongsExtendedVM> result = _context.ArtistWithSongsExtended.FromSqlInterpolated($"spArtistWithSongsExtended {id}").ToList().OrderByDescending(item => item.ReleaseYear).ToList();
+                List<ArtistWithSongsExtendedVM> result = await _context.ArtistWithSongsExtended.FromSqlInterpolated($"spArtistWithSongsExtended {id}").ToListAsync();
+                  result = result.OrderByDescending(item => item.ReleaseYear).ToList();
 
                 return View(result);
             }
