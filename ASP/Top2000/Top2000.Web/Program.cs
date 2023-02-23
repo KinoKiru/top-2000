@@ -2,14 +2,17 @@ using DataAccess;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Web.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<WebContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("WebContext") ?? throw new InvalidOperationException("Connection string 'WebContext' not found.")));
 var configuration = builder.Configuration;
 
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection2"), b => b.MigrationsAssembly("Web")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection2")));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddDefaultUI()

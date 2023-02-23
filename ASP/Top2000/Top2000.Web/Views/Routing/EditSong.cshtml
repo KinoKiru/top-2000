@@ -1,0 +1,13 @@
+﻿@model Models.Song;
+<form method="post">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Title</label>
+    <input class="form-control" asp-for="Title" type="text" name="Title" value="@Model.Title">
+    <div id="emailHelp" class="form-text">Verander hier de titel van het nummer</div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Photo</label>
+    <input type="file" asp-for="Photo" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
