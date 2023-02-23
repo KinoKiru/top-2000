@@ -1,0 +1,43 @@
+﻿<div class="px-3">
+    <h1>
+        Contact gegevens
+    </h1>
+    <div class="fw-bold">
+        <p>Telefoon nummer: <a href="tel:0800-1122">0800-1122</a> <i>(<small>gratis</small>)</i></p>
+        <p>Stuur een appje naar de studio! <a target="_blank" href="https://play.google.com/store/apps/details?id=nl.omroep.npo.radio2&hl=nl&gl=US&pli=1">Download de NPO Radio 2 app!</a></p>
+        <p>Stuur een mailtje naar ons <a href="mailto:info@radio2.nl">info@radio2.nl</a></p>
+        <p>Volg ons op <a class="text-info" href="https://www.facebook.com/NPORadio2/?locale=nl_NL">Facebook</a></p>
+    </div>
+</div>
+<div id="map"></div>
+<style>
+    p {
+        margin: 0
+    }
+
+    #map {
+        width: 100% !important;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        bottom: 0;
+        left: auto;
+        right: auto;
+        height: 360px;
+    }
+</style>
+
+<script>
+    var map = L.map('map', {
+        center: [52.239080, 5.168240],
+        zoom: 15
+    });
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    var marker = L.marker([52.238940, 5.168880]).addTo(map);
+    marker.bindPopup("<b>Bezoek Adres</b><br>Bart De Graaffweg 2").openPopup();
+</script>
+

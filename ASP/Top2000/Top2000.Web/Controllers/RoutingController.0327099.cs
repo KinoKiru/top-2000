@@ -65,5 +65,24 @@ namespace Web.Controllers
             _context.SaveChanges();
             return RedirectToAction("Artist", new { id = artist.ArtistId });
         }
+
+
+        [HttpGet]
+        public IActionResult Frequency()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Socials()
+        {
+            return View();
+        }
     }
 }
