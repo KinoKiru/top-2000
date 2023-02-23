@@ -1,0 +1,68 @@
+﻿@model List<Models.ViewModels.SongPositionArtistVM>;
+
+@{
+    ViewBag.Title = "Songs";
+}
+<h1>List of songs</h1>
+<div class="container-fluid">
+<form class="form-control" method="post">
+        <select name="year" class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            @for (int i = 1999; i < 2022; i++)
+            {
+                <option value="@i">@i</option>
+            }
+        </select>
+    <button type="submit" class="btn mt-1 btn-primary">Submit</button>
+</form>
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Position</th>
+                <th scope="col">Difference</th>
+                <th scope="col">Song</th>
+                <th scope="col">Artist</th>
+                <th scope="col">Release Year</th>
+            </tr>
+        </thead>
+        <tbody id="content">
+            @foreach (var item in Model)
+            {
+                <tr class="@(
+                item.Place % 2 == 0 ? "green" : "lighter-green")">
+                    <th scope="row"> @item.Place</th>
+                    @if (item.OldPosition > item.Place)
+                    {
+                        var dif = item.OldPosition - item.Place;
+                        <td class="text-success text-start">+@dif</td>
+                    }
+                    else if (item.OldPosition == item.Place || item.OldPosition == null)
+                    {
+                        <td class="text-start">&#160 -</td>
+
+                    }
+                    else
+                    {
+                        var dif = item.OldPosition - item.Place;
+                        <td class="text-danger text-start">@dif</td>
+                    }
+                    <td><a asp-action="SongDetails" asp-route-id="@item.SongId">@item.Title</a> </td>
+                    <td>
+                        <a asp-action="Artist" asp-route-id="@item.ArtistId">@item.Name</a>
+                    </td>
+                    <td>@item.ReleaseYear</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+     .green {
+        background-color: #66d0bc;
+    }
+
+    .lighter-green {
+        background-color: #Abf3e5;
+    }
+</style>

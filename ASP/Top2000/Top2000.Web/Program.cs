@@ -47,7 +47,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Routing}/{action=Song}/{id?}");
 app.MapRazorPages();
 
 using (var scope = app.Services.CreateScope())

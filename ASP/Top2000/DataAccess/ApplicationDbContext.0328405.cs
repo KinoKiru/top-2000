@@ -15,5 +15,6 @@ namespace DataAccess
         public DbSet<SongsPresentInEveryEditionVM> SongsPresentInEveryEditionVM { get; set; }
         public DbSet<SongsReenteredInSpecificEditionVM> SongsReenteredInSpecificEditionVM { get; set; }
         public DbSet<SongsWithSingleEntriesVM> SongsWithSingleEntriesVM { get; set; }
+
     }
 }

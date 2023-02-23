@@ -19,6 +19,8 @@ namespace Web.Controllers
         {
             _roleManager = roleManager;
         }
+
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             var roles = _roleManager.Roles;    
