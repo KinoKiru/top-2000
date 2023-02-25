@@ -50,13 +50,19 @@ namespace Api.Controllers
                 result = owo;
             }
 
+            if (onlyDecreased == true && onlyIncreased == true)
+            {
+                List<SongPositionArtistVM> owo = result;
+                result = owo.OrderBy(item => item.Place);
+            }
+
             return Results.Ok(result);
         }
 
-        [HttpGet("/test")]
-        public IResult SongsFromArtis(string ArtistName)
+        [HttpGet("/api/search")]
+        public async Task<IResult> SongsFromArtis(string ArtistName)
         {
-            var result = _context.SongsOfArtist.FromSqlInterpolated($"spSongsOfArtist {ArtistName}");
+            var result = await _context.Artist.Where(x => x.Name.Contains(ArtistName)).ToListAsync();
             return Results.Ok(result);
         }
 

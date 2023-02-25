@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:top2000/components/async_builder.dart';
-import 'package:top2000/components/artist_list_item.dart';
+import 'package:top2000/components/partial/artist_song_list_item.dart';
 import 'package:top2000/components/translation_wrapper.dart';
 import 'package:top2000/globals.dart';
 import 'package:top2000/models/artist_page.dart';
@@ -147,7 +147,7 @@ class _ArtistInfoState extends State<ArtistInfo> {
                             padding: EdgeInsets.zero,
                             itemCount: data.length,
                             itemBuilder: (BuildContext context, int index) =>
-                                ArtistList(song: data[index]),
+                                ArtistSongList(song: data[index]),
                           ),
                         ),
                       ),

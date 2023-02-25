@@ -20,9 +20,9 @@ Artist _$ArtistFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Artist {
-  int get id => throw _privateConstructorUsedError;
+  int get artistId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   @ByteArray()
   Uint8List? get photo => throw _privateConstructorUsedError;
 
@@ -37,7 +37,10 @@ abstract class $ArtistCopyWith<$Res> {
       _$ArtistCopyWithImpl<$Res, Artist>;
   @useResult
   $Res call(
-      {int id, String name, String description, @ByteArray() Uint8List? photo});
+      {int artistId,
+      String name,
+      String? description,
+      @ByteArray() Uint8List? photo});
 }
 
 /// @nodoc
@@ -53,24 +56,24 @@ class _$ArtistCopyWithImpl<$Res, $Val extends Artist>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? artistId = null,
     Object? name = null,
-    Object? description = null,
+    Object? description = freezed,
     Object? photo = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      artistId: null == artistId
+          ? _value.artistId
+          : artistId // ignore: cast_nullable_to_non_nullable
               as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       photo: freezed == photo
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
@@ -86,7 +89,10 @@ abstract class _$$_ArtistCopyWith<$Res> implements $ArtistCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id, String name, String description, @ByteArray() Uint8List? photo});
+      {int artistId,
+      String name,
+      String? description,
+      @ByteArray() Uint8List? photo});
 }
 
 /// @nodoc
@@ -99,24 +105,24 @@ class __$$_ArtistCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? artistId = null,
     Object? name = null,
-    Object? description = null,
+    Object? description = freezed,
     Object? photo = freezed,
   }) {
     return _then(_$_Artist(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      artistId: null == artistId
+          ? _value.artistId
+          : artistId // ignore: cast_nullable_to_non_nullable
               as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       photo: freezed == photo
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
@@ -129,7 +135,7 @@ class __$$_ArtistCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Artist with DiagnosticableTreeMixin implements _Artist {
   const _$_Artist(
-      {required this.id,
+      {required this.artistId,
       required this.name,
       required this.description,
       @ByteArray() this.photo});
@@ -138,18 +144,18 @@ class _$_Artist with DiagnosticableTreeMixin implements _Artist {
       _$$_ArtistFromJson(json);
 
   @override
-  final int id;
+  final int artistId;
   @override
   final String name;
   @override
-  final String description;
+  final String? description;
   @override
   @ByteArray()
   final Uint8List? photo;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Artist(id: $id, name: $name, description: $description, photo: $photo)';
+    return 'Artist(artistId: $artistId, name: $name, description: $description, photo: $photo)';
   }
 
   @override
@@ -157,7 +163,7 @@ class _$_Artist with DiagnosticableTreeMixin implements _Artist {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Artist'))
-      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('artistId', artistId))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('description', description))
       ..add(DiagnosticsProperty('photo', photo));
@@ -168,7 +174,8 @@ class _$_Artist with DiagnosticableTreeMixin implements _Artist {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Artist &&
-            (identical(other.id, id) || other.id == id) &&
+            (identical(other.artistId, artistId) ||
+                other.artistId == artistId) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -177,7 +184,7 @@ class _$_Artist with DiagnosticableTreeMixin implements _Artist {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, description,
+  int get hashCode => Object.hash(runtimeType, artistId, name, description,
       const DeepCollectionEquality().hash(photo));
 
   @JsonKey(ignore: true)
@@ -196,19 +203,19 @@ class _$_Artist with DiagnosticableTreeMixin implements _Artist {
 
 abstract class _Artist implements Artist {
   const factory _Artist(
-      {required final int id,
+      {required final int artistId,
       required final String name,
-      required final String description,
+      required final String? description,
       @ByteArray() final Uint8List? photo}) = _$_Artist;
 
   factory _Artist.fromJson(Map<String, dynamic> json) = _$_Artist.fromJson;
 
   @override
-  int get id;
+  int get artistId;
   @override
   String get name;
   @override
-  String get description;
+  String? get description;
   @override
   @ByteArray()
   Uint8List? get photo;

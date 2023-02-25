@@ -7,14 +7,14 @@ part of 'artist.dart';
 // **************************************************************************
 
 _$_Artist _$$_ArtistFromJson(Map<String, dynamic> json) => _$_Artist(
-      id: json['id'] as int,
+      artistId: json['artistId'] as int,
       name: json['name'] as String,
-      description: json['description'] as String,
+      description: json['description'] as String?,
       photo: const ByteArray().fromJson(json['photo'] as List<int>?),
     );
 
 Map<String, dynamic> _$$_ArtistToJson(_$_Artist instance) => <String, dynamic>{
-      'id': instance.id,
+      'artistId': instance.artistId,
       'name': instance.name,
       'description': instance.description,
       'photo': const ByteArray().toJson(instance.photo),

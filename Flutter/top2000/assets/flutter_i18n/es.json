@@ -19,10 +19,14 @@
   "navigation": {
     "home": "Comienzo",
     "playlist": "lista de reproducción",
-    "settings": "Ajustes"
+    "settings": "Ajustes",
+    "search": "Buscar"
   },
   "settings": {
     "color": "Modo de color",
     "locales": "Configuración de lenguaje"
+  },
+  "search": {
+    "noItems": "No se encontraron resultados"
   }
 }
