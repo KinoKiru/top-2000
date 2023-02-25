@@ -1,0 +1,23 @@
+version: "3.2"
+services:
+
+  sql-server-db:
+    container_name: sql-server-db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "Top2000Neef"
+      ACCEPT_EULA: "Y"
+    volumes:
+      - type: volume
+        source: mssql-db
+        target: /var/opt/mssql
+  api:
+    build: .
+    ports: 
+      - "5325:5000"
+    depends_on:
+      - sql-server-db
+volumes:
+  mssql-db:
