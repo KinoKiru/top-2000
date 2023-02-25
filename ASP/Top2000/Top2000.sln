@@ -5,8 +5,6 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Top2000.Web\Web.csproj", "{FB464FEA-695B-4722-BD3C-63E8B06EBE40}"
 EndProject
-Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Documentation", "Documentation\Documentation.shfbproj", "{E4876A42-AFD3-46B1-A323-143A7066B59E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{D672376A-A949-4433-9C57-4F1550CD23EE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Classes", "Classes\Classes.csproj", "{0F2D8041-FED8-45CE-9084-2E65588A66C3}"

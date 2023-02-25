@@ -6,6 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-Top2000.Web-e9507f68-252e-4e1f-86d8-64a95710ba80</UserSecretsId>
   </PropertyGroup>
+  
+  <PropertyGroup>
+ <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+</PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.2" />
