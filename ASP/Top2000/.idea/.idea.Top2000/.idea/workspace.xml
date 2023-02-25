@@ -8,13 +8,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10830aac-69ab-4580-9aae-1baae55fb457" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Top2000/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Top2000.Web/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Top2000.Web/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Top2000/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Top2000/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Api.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Top2000.Web/Web.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Top2000.Web/Web.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///home/kinokiru/Documents/Top2000/Top2000/ASP/Top2000/Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -117,6 +122,7 @@
       <workItem from="1674722630387" duration="1048000" />
       <workItem from="1674735810959" duration="931000" />
       <workItem from="1674742159877" duration="50000" />
+      <workItem from="1677320969982" duration="330000" />
     </task>
     <servers />
   </component>
