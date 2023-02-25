@@ -6,7 +6,7 @@ import 'package:top2000/models/home_page.dart';
 
 class RemoteService {
   static final Client _client = Client();
-  final String _apiUrl = 'http://10.0.2.2:5273/api';
+  final String _apiUrl = 'http://143.178.215.190:5325/api';
 
   Future<List<HomeData>>? getSongs(String options) async {
     Uri uri = Uri.parse('$_apiUrl/songs?$options');

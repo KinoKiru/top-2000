@@ -19,52 +19,54 @@ class _SearchState extends State<Search> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(left: 12, right: 12, top: 16),
-            child: SizedBox(
-              height: 50,
-              child: TextFormField(
-                onChanged: (String value) async {
-                  if (value.length > 3) {
-                    foundArtist = await _service.searchArtist(value);
-                    setState(() {});
-                  } else {
-                    foundArtist.clear();
-                    setState(() {});
-                  }
-                },
-                autofocus: false,
-                controller: controller,
-                decoration: InputDecoration(
-                  prefixIcon: const Icon(CupertinoIcons.search),
-                  prefixIconColor: Colors.grey.shade200,
-                  border: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(50),
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(left: 12, right: 12, top: 16),
+              child: SizedBox(
+                height: 50,
+                child: TextFormField(
+                  onChanged: (String value) async {
+                    if (value.length > 3) {
+                      foundArtist = await _service.searchArtist(value);
+                      setState(() {});
+                    } else {
+                      foundArtist.clear();
+                      setState(() {});
+                    }
+                  },
+                  autofocus: false,
+                  controller: controller,
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(CupertinoIcons.search),
+                    prefixIconColor: Colors.grey.shade200,
+                    border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(50),
+                      ),
                     ),
+                    labelText:
+                        FlutterI18n.translate(context, 'navigation.search'),
                   ),
-                  labelText:
-                      FlutterI18n.translate(context, 'navigation.search'),
                 ),
               ),
             ),
-          ),
-          if (foundArtist.isEmpty &&
-              (controller.text.isNotEmpty && controller.text.length > 3))
-            I18nText('search.noItems'),
-          Expanded(
-            child: ListView.builder(
-              padding: EdgeInsets.zero,
-              itemBuilder: (BuildContext context, int index) => ArtistList(
-                artist: foundArtist[index],
+            if (foundArtist.isEmpty &&
+                (controller.text.isNotEmpty && controller.text.length > 3))
+              I18nText('search.noItems'),
+            Expanded(
+              child: ListView.builder(
+                padding: EdgeInsets.zero,
+                itemBuilder: (BuildContext context, int index) => ArtistList(
+                  artist: foundArtist[index],
+                ),
+                itemCount: foundArtist.length,
               ),
-              itemCount: foundArtist.length,
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

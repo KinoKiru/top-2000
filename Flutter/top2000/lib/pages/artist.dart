@@ -140,13 +140,11 @@ class _ArtistInfoState extends State<ArtistInfo> {
                       ),
                       SizedBox(
                         height: sizeY / 1.9,
-                        child: Expanded(
-                          child: ListView.builder(
-                            padding: EdgeInsets.zero,
-                            itemCount: data.length,
-                            itemBuilder: (BuildContext context, int index) =>
-                                ArtistSongList(song: data[index]),
-                          ),
+                        child: ListView.builder(
+                          padding: EdgeInsets.zero,
+                          itemCount: data.length,
+                          itemBuilder: (BuildContext context, int index) =>
+                              ArtistSongList(song: data[index]),
                         ),
                       ),
                     ],
