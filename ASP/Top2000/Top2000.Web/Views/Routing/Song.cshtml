@@ -20,6 +20,7 @@
             <tr>
                 <th scope="col">Position</th>
                 <th scope="col">Difference</th>
+                <th scope="col"></th>
                 <th scope="col">Song</th>
                 <th scope="col">Artist</th>
                 <th scope="col">Release Year</th>
@@ -46,6 +47,9 @@
                         var dif = item.OldPosition - item.Place;
                         <td class="text-danger text-start">@dif</td>
                     }
+                    <td>
+                        <img src="@(item.SongPhoto != null ? $"data:image/jpg;base64,{item.SongPhoto}" : "https://media.istockphoto.com/id/1357365823/vector/default-image-icon-vector-missing-picture-page-for-website-design-or-mobile-app-no-photo.jpg?s=612x612&w=0&k=20&c=PM_optEhHBTZkuJQLlCjLz-v3zzxp-1mpNQZsdjrbns=")"
+                 style="height: 50px; width: 50px" /></td>
                     <td><a asp-action="SongDetails" asp-route-id="@item.SongId">@item.Title</a> </td>
                     <td>
                         <a asp-action="Artist" asp-route-id="@item.ArtistId">@item.Name</a>
