@@ -55,4 +55,4 @@ using (var scope = app.Services.CreateScope())
     await DbSeeder.SeedRolesAndAdminAsync(scope.ServiceProvider);
 }
 
-app.Run();
+app.Run("http://0.0.0.0:5000");

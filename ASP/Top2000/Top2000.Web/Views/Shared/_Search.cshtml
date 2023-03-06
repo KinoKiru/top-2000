@@ -38,7 +38,7 @@
         if (searchValue.length < 3) {
             return;
         }
-        $.get(`https://localhost:7258/api/search?ArtistName=${searchValue}`)
+        $.get(`http://143.178.215.190:5325/api/search?ArtistName=${searchValue}`)
             .done((data) => {
                 console.log(data);
                 $('#menu').removeClass('d-none');

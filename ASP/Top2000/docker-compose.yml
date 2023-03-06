@@ -14,10 +14,22 @@ services:
         source: mssql-db
         target: /var/opt/mssql
   api:
-    build: .
+    build:
+       context: .
+       dockerfile: ./api.Dockerfile
     ports: 
       - "5325:5000"
     depends_on:
       - sql-server-db
+  
+  web:
+    build:
+       context: .
+       dockerfile: ./web.Dockerfile
+    ports: 
+      - "5326:5000"
+    depends_on:
+      - sql-server-db
+    
 volumes:
   mssql-db:
