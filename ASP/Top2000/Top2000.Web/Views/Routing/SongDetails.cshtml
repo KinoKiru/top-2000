@@ -13,7 +13,8 @@
         </div>
     </div>
 
+        @if(User.IsInRole("Admin")) {
      <a class="position-absolute top-0 mt-3 pt-5 fs-4" asp-action="EditSong" asp-route-id="@item.SongId">Edit Song</a>
-    
+        }
 
 }
