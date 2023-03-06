@@ -1,0 +1,51 @@
+@using System.Reflection
+@model List<dynamic>
+
+
+@{
+    ViewData["Title"] = ViewBag.title ?? "stats";
+    bool withYears = ViewBag.withYears ?? false;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@(ViewBag.title ?? "stats")</title>
+</head>
+<body>
+<div>
+    @if(withYears)
+    {
+        <form class="form-control" method="post" asp-action="@ViewBag.action">
+            <select name="year" class="form-select" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                @for (int i = 1999; i < 2022; i++)
+                {
+                    <option value="@i">@i</option>
+                }
+            </select>
+            <button type="submit" class="btn mt-1 btn-primary">Submit</button>
+        </form>
+    }
+    <table class="table table-striped">
+        <tr>
+            @foreach (PropertyInfo p in Model[0].GetType().GetProperties())
+            {
+                <th class="col">@p.Name</th>
+            }
+        </tr>
+        <tbody>
+        @foreach (var model in @Model)
+        {
+            <tr class="bg-white">
+                @foreach (PropertyInfo p in model.GetType().GetProperties())
+                {
+                    <td>@(p.GetValue(model, null))</td>
+                }
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -7,6 +7,6 @@
         public int ReleaseYear { get; set; }
         public int ThisYear { get; set; }
         public int OldYear { get; set; }
-        public int Decrease { get; set; }
+        public int Decreased { get; set; }
     }
 }

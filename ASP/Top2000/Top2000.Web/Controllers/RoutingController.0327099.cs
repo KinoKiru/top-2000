@@ -26,7 +26,7 @@ namespace Web.Controllers
             }
             catch (Exception ex)
             {
-                return View(ex);
+                return View();
             }
         }
 

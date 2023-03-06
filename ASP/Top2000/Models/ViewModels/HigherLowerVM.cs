@@ -13,6 +13,6 @@ namespace Models.ViewModels
 
         public string Name { get; set; } = string.Empty;
 
-        public int Year {  get; set; }
+        public int ReleaseYear {  get; set; }
     }
 }

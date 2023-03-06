@@ -1,81 +1,145 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - Top2000.Web</title>
     @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Top2000.Web.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/journal.min.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/Top2000.Web.styles.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/journal.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
 </head>
 <body class="mb-0">
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Routing" asp-action="Song">Top2000</a>
-                <div class="d-lg-grid d-flex flex-grow-1 me-2">
-                    <partial name="_Search" />
-                </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
-                    <ul class="navbar-nav justify-content-end">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Routing" asp-action="Song">Home</a>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="Routing" asp-action="Song">Top2000</a>
+            <div class="d-lg-grid d-flex flex-grow-1 me-2">
+                <partial name="_Search"/>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+                <ul class="navbar-nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Routing" asp-action="Song">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Routing" asp-action="Frequency">Frequencies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Routing" asp-action="Contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Routing" asp-action="Socials">Socials</a>
+                    </li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item d-none d-md-flex">
+                            <div class="dropdown align-content-center pb-0 mb-0">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Admin
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li>
+                                        <a class="dropdown-item text-dark" asp-area="" asp-controller="Role" asp-action="Index">Rollen</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-dark" asp-area="" asp-controller="Routing" asp-action="Import">Importeren</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Routing" asp-action="Frequency">Frequencies</a>
+                        <li class="nav-item d-md-none">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">Rollen</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Routing" asp-action="Contact">Contact</a>
+                        <li class="nav-item d-md-none">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Routing" asp-action="Import">Importeren</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Routing" asp-action="Socials">Socials</a>
-                        </li>
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <li class="nav-item d-none d-md-flex">
-                                <div class="dropdown align-content-center pb-0 mb-0">
-                                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Admin
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <li><a class="dropdown-item text-dark" asp-area="" asp-controller="Role" asp-action="Index">Rollen</a></li>
-                                        <li><a class="dropdown-item text-dark" asp-area="" asp-controller="Routing" asp-action="Import">Importeren</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item d-md-none">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">Rollen</a>
-                            </li>
-                            <li class="nav-item d-md-none">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Routing" asp-action="Import">Importeren</a>
-                            </li>
-                        }
-                    </ul>
-                    <div class="d-md-none d-flex">
-                        <partial name="_LoginPartial" />
-                    </div>
-                </div>
-                <div class="d-none d-md-flex">
-                    <partial name="_LoginPartial" />
+                    }
+                    <li class="nav-item ">
+                        <div class="dropdown align-content-center pb-0 mb-0">
+                            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                Stats
+                            </button>
+
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                <li>
+                                    <form method="post" asp-controller="Stats" asp-action="DecreaseOfPosition">
+                                        <input type="submit" class="btn w-auto" value="Decrease of position">
+                                    </form>
+                                </li>
+                                <li>
+                                    <form method="post" asp-controller="Stats" asp-action="NewComers">
+                                        <input type="submit" class="btn w-auto" value="New comers">
+                                    </form>
+                                </li>
+                                <li>
+                                    <form method="post" asp-controller="Stats" asp-action="SamePosition">
+                                        <input type="submit" class="btn w-auto" value="Same position">
+                                    </form>
+                                </li>
+                                <li>
+                                    <form method="post" asp-controller="Stats" asp-action="TopThreeArtist">
+                                        <input type="submit" class="btn w-auto btn-warning" value="Top three artist">
+                                    </form>
+                                </li>
+                                <li>
+                                    <form method="post" asp-controller="Stats" asp-action="SongsInEveryEdition">
+                                        <input type="submit" class="btn w-auto" value="Songs in every edition">
+                                    </form>
+                                </li>
+                                <li>
+                                    <form method="post" asp-controller="Stats" asp-action="ReinteredInEdition">
+                                        <input type="submit" class="btn w-auto" value="Songs reentered">
+                                    </form>
+                                </li>
+                                <li>
+                                    <form method="post" asp-controller="Stats" asp-action="SongsSingleEntry">
+                                        <input type="submit" class="btn w-auto" value="Songs with single entry">
+                                    </form>
+                                </li>
+                                <li>
+                                    <form method="post" asp-controller="Stats" asp-action="Diffrence">
+                                        <input type="submit" class="btn w-auto" value="Diffrence">
+                                    </form>
+                                </li>
+                                <li>
+                                    <form method="post" asp-controller="Stats" asp-action="LostSongs">
+                                        <input type="submit" class="btn w-auto" value="Lost songs">
+                                    </form>
+                                </li>
+                                <li>
+                                    <form method="post" asp-controller="Stats" asp-action="HigherLower">
+                                        <input type="submit" class="btn w-auto" value="Higher Lower">
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <div class="d-md-none d-flex">
+                    <partial name="_LoginPartial"/>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container-fluid h-100 p-0">
-        <main role="main" class="pb-3 h-100">
-            @RenderBody()
-        </main>
-    </div>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>   
-    @await RenderSectionAsync("Scripts", required: false)
+            <div class="d-none d-md-flex">
+                <partial name="_LoginPartial"/>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid h-100 p-0">
+    <main role="main" class="pb-3 h-100">
+        @RenderBody()
+    </main>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
