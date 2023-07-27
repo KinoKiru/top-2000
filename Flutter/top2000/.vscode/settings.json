@@ -1,6 +1,0 @@
-{
-  "i18n-ally.localesPaths": ["assets/flutter_i18n"],
-  "i18n-ally.keystyle": "nested",
-  "java.configuration.updateBuildConfiguration": "interactive",
-  "cSpell.words": ["wikipedia"]
-}
